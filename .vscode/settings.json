@@ -1,0 +1,5 @@
+{
+    "markdown-pdf.displayHeaderFooter": true,
+    "markdown-pdf.footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"> <span class='pageNumber'></span> </div>",
+    "markdown-pdf.headerTemplate": "<div style=\"font-size: 9px; margin-left: 1cm;\"> <script type=\"text/x-mathjax-config\">         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\\\(','\\\\)']]}});       </script>     <script type=\"text/javascript\"         src=\"http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML\">  </script> </div>"
+}
