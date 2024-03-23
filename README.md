@@ -140,7 +140,7 @@ $$
 - $PRODUCTS = \{P_1, P_2, P_3, P_4\}$ - zbiór produktów,
 - $PROCESSES = \{szlifowanie, wiercenie\_pionowe, wiercenie\_poziome, frezowanie, toczenie\}$ - zbiór procesów,
 - $MONTHS = \{styczeń, luty, marzec\}$ - zbiór miesięcy,
-- $MONTH\_SUCCESSORS = \{(styczeń, luty), (luty, marzec)\}$
+- $MONTH\_SUCCESSORS = \{(grudzień, styczeń), (styczeń, luty), (luty, marzec)\}$ - zbiór miesięcy oraz ich następników.
 
 ### Parametry
 
@@ -158,7 +158,7 @@ $$
 PROCESS\_TOOLS = [4, 2, 3, 1, 1]
 $$
 
-- $PRODUCTION\_TIME[p][i]\ dla\ p \in PRODUCTS,\ i \in PROCESSES$ - wymagany czas produkcji 1 sztuki produktu (w godzinach) w danym procesie obróbki
+- $PRODUCTION\_TIME[p][i]\ dla\ p \in PRODUCTS,\ i \in PROCESSES$ - wymagany czas produkcji 1 sztuki produktu (w godzinach) w danym procesie obróbki:
 
 $$
 PRODUCTION\_TIME = 
@@ -171,11 +171,11 @@ PRODUCTION\_TIME =
     \end{bmatrix}
 $$
 
-- $EXPECTED\_INCOME\_PER\_PRODUCT[p]\ dla \ p \in PRODUCTS$ - średni dochód ze sprzedaży produktów (w zł/sztukę)
+- $EXPECTED\_INCOME\_PER\_PRODUCT[p]\ dla \ p \in PRODUCTS$ - średni dochód ze sprzedaży produktów (w zł/sztukę):
 
 TODO
 
-- $SELL\_LIMIT[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - ograniczenia rynkowe na liczbę sprzedawanych produktów w danym miesiącu
+- $SELL\_LIMIT[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - ograniczenia rynkowe na liczbę sprzedawanych produktów w danym miesiącu:
 
 $$
 SELL\_LIMIT = 
@@ -188,9 +188,9 @@ $$
 
 ### Zmienne decyzyjne
 
-- $production[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - ilość danego produktu wytworzona w ciągu miesiąca
-- $sale[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - oczekiwana ilość produktu, sprzedana w ciągu miesiąca
-- $left\_over[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - oczekiwana ilość produktu, która pozostanie w magazynie na koniec miesiąca
+- $production[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - ilość danego produktu wytworzona w ciągu miesiąca,
+- $sale[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - oczekiwana ilość produktu, sprzedana w ciągu miesiąca,
+- $left\_over[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS \cup \{grudzień\}  $ - ilość produktu, która pozostanie w magazynie na koniec miesiąca,
 - $income$ - całkowity dochód.
 
 ### Ograniczenia
@@ -204,13 +204,13 @@ $$
 - Pozostałości ze sprzedaży są różnicą sumy produktów przechowywanych z poprzedniego miesiąca i wyprodukowanych oraz sprzedanych:
 
 $$
-\forall_{(s, c) \in MONTH\_SUCCESSORS,\ p \in PRODUCTS}\ left\_over[p][c] = production[p][c] + left\_over[p][s] - sale[p][c] 
+\forall_{(s, c) \in MONTH\_SUCCESSORS,\ p \in PRODUCTS}\ left\_over[p][c] = production[p][c] + left\_over[p][s] - sale[p][c]
 $$
 
-- Firma na początku stycznia nie posiada żadnych zapasów, więc pozostałości przedmiotów w pierwszym miesiącu są równe 0:
+- Firma na początku stycznia nie posiada żadnych zapasów, więc pozostałości przedmiotów z grudnia są równe 0:
 
 $$
-\forall_{p \in PRODUCTS}\ left\_over[p][styczeń] = 0
+\forall_{p \in PRODUCTS}\ left\_over[p][grudzień] = 0
 $$
 
 - Dochodem całkowitym jest różnica dochodu ze sprzedaży oraz kosztu magazynowania.
@@ -243,9 +243,11 @@ $$
 \forall_{p \in PRODUCTS}\ left\_over[p][marzec] \ge PRODUCT\_MINIMAL\_LEFT\_OVER
 $$
 
+<!-- TODO: zastanów się nad dodaniem warunków na dodatniość produkcji, pozostałości i sprzedaży -->
+
 ### Funkcje oceny
 
-Maksymalizujemy dochód z produkcji, zatem funkcją oceny jest: 
+Firma chce osiągnąć największy zysk. Maksymalizujemy dochód z produkcji, zatem funkcją oceny jest: 
 $$
 max(income)
 $$
