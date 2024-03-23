@@ -3,7 +3,7 @@ from scipy.stats import t
 from typing import Callable
 
 
-def calculate_expected_value_for_t_student_distribution(
+def calculate_expected_value_for_truncated_t_student_distribution(
     μ: float,
     σ: float,
     v: float,
@@ -54,7 +54,7 @@ DEGREES_OF_FREEDOM = 4
 if __name__ == '__main__':
     for i, row in enumerate(Σ):
         σ = sqrt(Σ[i][i])
-        expected = calculate_expected_value_for_t_student_distribution(
+        expected = calculate_expected_value_for_truncated_t_student_distribution(
             μ=μ[i],
             σ=σ,
             v=DEGREES_OF_FREEDOM,
