@@ -19,7 +19,8 @@ def calculate_expected_value_for_t_student_distribution(
     exponent = -(v - 1) / 2
 
     return (
-        μ + σ * (
+        μ
+        + σ * (
             Γ((v - 1) / 2)
             * ((v + a**2)**exponent - (v + b**2)**exponent)
             * (v**(v/2))
