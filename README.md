@@ -107,10 +107,10 @@ $$
 $$
 
 $$
-R_1 \sim Tt_{(5;12)}(9, \sigma^2; 4) \\
-R_2 \sim Tt_{(5;12)}(8, \sigma^2; 4) \\
-R_3 \sim Tt_{(5;12)}(7, \sigma^2; 4) \\
-R_4 \sim Tt_{(5;12)}(6, \sigma^2; 4) \\
+R_1 \sim Tt_{(5;12)}(9, 16; 4) \\
+R_2 \sim Tt_{(5;12)}(8, 9; 4) \\
+R_3 \sim Tt_{(5;12)}(7, 4; 4) \\
+R_4 \sim Tt_{(5;12)}(6, 1; 4) \\
 $$
 
 $$
@@ -123,10 +123,10 @@ a = (\alpha - \mu) / \sigma, b = (\beta - \mu) / \sigma
 $$
 
 $$
-E(R_1) = TODO \\
-E(R_2) = TODO \\
-E(R_3) = TODO \\
-E(R_4) = TODO \\
+E(R_0) = 8.6274568376001 \\
+E(R_1) = 8.304864144322744 \\
+E(R_2) = 7.605077266035032 \\
+E(R_3) = 6.421595377441505
 $$
 
 ## Specyfikacja problemu decyzyjnego
@@ -173,7 +173,9 @@ $$
 
 - $EXPECTED\_INCOME\_PER\_PRODUCT[p]\ dla \ p \in PRODUCTS$ - średni dochód ze sprzedaży produktów (w zł/sztukę):
 
-TODO
+$$
+EXPECTED\_INCOME\_PER\_PRODUCT = [E(R_1), E(R_2), E(R_3), E(R_4)]
+$$
 
 - $SELL\_LIMIT[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - ograniczenia rynkowe na liczbę sprzedawanych produktów w danym miesiącu:
 
