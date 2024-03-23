@@ -158,7 +158,7 @@ $$
 PROCESS\_TOOLS = [4, 2, 3, 1, 1]
 $$
 
-- $PRODUCTION\_TIME[p][i]\ dla\ p \in PRODUCTS,\ i \in PROCESSES$ - wymagany czas produkcji 1 sztuki produktu (w godzinach) w danym procesie obróbki:
+- $PRODUCTION\_TIME[i][p]\ dla\ p \in PRODUCTS,\ i \in PROCESSES$ - wymagany czas produkcji 1 sztuki produktu (w godzinach) w danym procesie obróbki:
 
 $$
 PRODUCTION\_TIME = 
@@ -177,7 +177,7 @@ $$
 EXPECTED\_INCOME\_PER\_PRODUCT = [E(R_1), E(R_2), E(R_3), E(R_4)]
 $$
 
-- $SELL\_LIMIT[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - ograniczenia rynkowe na liczbę sprzedawanych produktów w danym miesiącu:
+- $SELL\_LIMIT[m][p]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - ograniczenia rynkowe na liczbę sprzedawanych produktów w danym miesiącu:
 
 $$
 SELL\_LIMIT = 
@@ -200,7 +200,7 @@ $$
 - Czas produkcji wszystkich przedmiotów w miesiącu nie może przekroczyć dostępności maszyn w miesiącu:
 
 $$
-\forall_{m \in MONTHS,\ i \in PROCESSES} \Sigma_{p \in PRODUCTS}\ (production[p][m] * PRODUCTION\_TIME[p][i]) \le WORKING\_HOURS\_IN\_A\_MONTH * PROCESS\_TOOLS[i]
+\forall_{m \in MONTHS,\ i \in PROCESSES} \Sigma_{p \in PRODUCTS}\ (production[p][m] * PRODUCTION\_TIME[i][p]) \le WORKING\_HOURS\_IN\_A\_MONTH * PROCESS\_TOOLS[i]
 $$
 
 - Pozostałości ze sprzedaży są różnicą sumy produktów przechowywanych z poprzedniego miesiąca i wyprodukowanych oraz sprzedanych:
@@ -224,7 +224,7 @@ $$
 - Ograniczenia rynkowe na liczbę sprzedawanych produktów w danym miesiącu nie mogą być przekroczone:
 
 $$
-\forall_{p \in PRODUCTS,\ m \in MONTHS}\ sale[p][m] <= SELL\_LIMIT[p][m]
+\forall_{p \in PRODUCTS,\ m \in MONTHS}\ sale[p][m] <= SELL\_LIMIT[m][p]
 $$
 
 - Produkt $P_4$ musi być sprzedawany w liczbie sztuk nie mniejszej niż suma sprzedawanych produktów $P_1$ i $P_2$:
