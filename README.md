@@ -8,7 +8,7 @@ Bartłomiej Krawczyk, 310774
 
 #### Rozważamy następujące zagadnienie planowania produkcji:
 
-Przedsiębiorstwo wytwarza 4 produkty P1, P2, P3, P4 na następujących maszynach: 
+Przedsiębiorstwo wytwarza 4 produkty $P_1, P_2, P_3, P_4$ na następujących maszynach: 
 - 4 szlifierkach,
 - 2 wiertarkach pionowych, 
 - 3 wiertarkach poziomych, 
@@ -25,8 +25,7 @@ Wiercenie poziome | 0.1  | -    | 0.7  | -
 Frezowanie        | 0.06 | 0.04 | -    | 0.05
 Toczenie          | -    | 0.05 | 0.02 | -
 
-Dochody ze sprzedaży produktów (w zł/sztukę) modelują składowe wektora losowego $R =
-(R1, R2, R3, R4)^T$ . Wektor losowy $R$ opisuje 4-wymiarowy rozkład t-Studenta z 4 stopniami swobody, którego wartości składowych zostały zawężone do przedziału $[5; 12]$. Parametry $\mu$ oraz $\Sigma$ niezawężonego rozkładu t-Studenta są następujące:
+Dochody ze sprzedaży produktów (w zł/sztukę) modelują składowe wektora losowego $R = (R_1, R_2, R_3, R_4)^T$ . Wektor losowy $R$ opisuje 4-wymiarowy rozkład t-Studenta z 4 stopniami swobody, którego wartości składowych zostały zawężone do przedziału $[5; 12]$. Parametry $\mu$ oraz $\Sigma$ niezawężonego rozkładu t-Studenta są następujące:
 
 $$
 \mu = 
@@ -40,9 +39,9 @@ $$
 $$
 \Sigma = 
     \begin{bmatrix}
-        16 & -2 & -1 & -3 \\\\
-        -2 &  9 & -4 & -1 \\\\
-        -1 & -4 &  4 &  1 \\\\
+        16 & -2 & -1 & -3 \\
+        -2 &  9 & -4 & -1 \\
+        -1 & -4 &  4 &  1 \\
         -3 & -1 &  1 &  1
     \end{bmatrix}
 $$
@@ -55,12 +54,14 @@ Styczeń | 200 | 0   | 100 | 200
 Luty    | 300 | 100 | 200 | 200
 Marzec  | 0   | 300 | 100 | 200
 
-Jeżeli w danym miesiącu jest sprzedawany produkt P1 lub P2, to musi być również sprzedawany produkt P4 w liczbie sztuk nie mniejszej niż suma sprzedawanych produktów P1 i P2.
+Jeżeli w danym miesiącu jest sprzedawany produkt $P_1$ lub $P_2$, to musi być również sprzedawany produkt $P_4$ w liczbie sztuk nie mniejszej niż suma sprzedawanych produktów $P_1$ i $P_2$.
 
 Istnieje możliwość składowania do 200 sztuk każdego produktu w danym czasie w cenie
 1 zł/sztukę za miesiąc. Aktualnie firma nie posiada żadnych zapasów, ale jest pożądane mieć po 50 sztuk każdego produktu pod koniec marca.
 
 Przedsiębiorstwo pracuje 6 dni w tygodniu w systemie dwóch zmian. Każda zmiana trwa 8 godzin. Można założyć, że każdy miesiąc składa się z 24 dni roboczych.
+
+---
 
 1. Zaproponować jednokryterialny model wyboru w warunkach ryzyka z wartością średnią jako miarą zysku. Wyznaczyć rozwiązanie optymalne.
 
@@ -69,16 +70,185 @@ Przedsiębiorstwo pracuje 6 dni w tygodniu w systemie dwóch zmian. Każda zmian
     - Wskazać rozwiązania efektywne minimalnego ryzyka i maksymalnego zysku. Jakie odpowiadają im wartości w przestrzeni ryzyko–zysk?
     - Wybrać trzy dowolne rozwiązania efektywne. Sprawdzić czy zachodzi pomiędzy nimi relacja dominacji stochastycznej pierwszego rzędu. Wyniki skomentować, odnieść do ogólnego przypadku.
 
+# Jednokryterialny model wyboru w warunkach ryzyka z wartością średnią jako miarą zysku
 
 ## Analityczne sformułowanie modelu
 
 <!-- Wskazanie i uzasadnienie przyjętych założeń. -->
 <!-- Wskazanie podstaw teoretycznych. -->
 
+### Wartość oczekiwana zawężonego rozkładu t-Studenta wektora losowego $R$
+
+Zmienna losowa R ma niestandardowy rozkład t-Studenta z 4 stopniami swobody zawężony do przedziału $[5; 12]$.
+
+$$
+\mu = 
+    \begin{bmatrix}
+        9 \\
+        8 \\
+        7 \\
+        6
+    \end{bmatrix}
+$$
+
+$$
+\Sigma = 
+    \begin{bmatrix}
+        16 & -2 & -1 & -3 \\
+        -2 &  9 & -4 & -1 \\
+        -1 & -4 &  4 &  1 \\
+        -3 & -1 &  1 &  1
+    \end{bmatrix}
+$$
+
+$$
+\alpha = 5 \\
+\beta = 12
+$$
+
+$$
+R_1 \sim Tt_{(5;12)}(9, \sigma^2; 4) \\
+R_2 \sim Tt_{(5;12)}(8, \sigma^2; 4) \\
+R_3 \sim Tt_{(5;12)}(7, \sigma^2; 4) \\
+R_4 \sim Tt_{(5;12)}(6, \sigma^2; 4) \\
+$$
+
+$$
+E(R) = \mu + \sigma \frac{\Gamma((v-1)/2)((v+a^2)^{-(v-1)/2}-(v+b^2)^{-(v-1)/2})v^{v/2}}{2(F_v(b)-F_v(a))\Gamma(v/2)\Gamma(1/2)}
+dla v > 1
+$$
+
+$$
+a = (\alpha - \mu) / \sigma, b = (\beta - \mu) / \sigma
+$$
+
+$$
+E(R_1) = TODO \\
+E(R_2) = TODO \\
+E(R_3) = TODO \\
+E(R_4) = TODO \\
+$$
+
 ## Specyfikacja problemu decyzyjnego
 
 <!-- Specyfikacja problemu decyzyjnego z dookreśleniem wszystkich elementów. -->
 <!-- Określenie zmiennych decyzyjnych, ograniczeń i funkcji oceny. -->
+
+
+### Dostępne zbiory
+
+- $PRODUCTS = \{P_1, P_2, P_3, P_4\}$ - zbiór produktów,
+- $PROCESSES = \{szlifowanie, wiercenie\_pionowe, wiercenie\_poziome, frezowanie, toczenie\}$ - zbiór procesów,
+- $MONTHS = \{styczeń, luty, marzec\}$ - zbiór miesięcy,
+- $MONTH\_SUCCESSORS = \{(styczeń, luty), (luty, marzec)\}$
+
+### Parametry
+
+- $HOURS\_IN\_A\_SHIFT = 8$ - zmiany trwają po 8h,
+- $NUMBER\_OF\_SHIFTS = 2$ - przedsiębiorstwo pracuje w systemie dwóch zmian,
+- $WORKING\_DAYS\_IN\_A\_MONTH = 24$ - każdy miesiąc składa się z 24 dni roboczych,
+- $WORKING\_HOURS\_IN\_A\_MONTH = HOURS\_IN\_A\_SHIFT * NUMBER\_OF\_SHIFTS * WORKING\_DAYS\_IN\_A\_MONTH = 384$ - całkowita liczba przepracowanych godzin w miesiącu,
+- $PRODUCT\_STORAGE\_LIMIT = 200$ - przedsiębiorstwo ma możliwość składowania do 200 sztuk każdego produktu,
+- $MONTHLY\_PRODUCT\_STORAGE\_COST = 1$ - cena składowania produktu to 1 zł/sztukę,
+- $PRODUCT\_MINIMAL\_LEFT\_OVER = 50$ - pożądany zapas każdego produktu pod koniec marca to 50 produktów,
+
+- $PROCESS\_TOOLS[p]\ dla\ p \in PROCESSES$ - liczba maszyn pozwalających na równoległe wytwarzanie w danym procesie,
+
+$$
+PROCESS\_TOOLS = [4, 2, 3, 1, 1]
+$$
+
+- $PRODUCTION\_TIME[p][i]\ dla\ p \in PRODUCTS,\ i \in PROCESSES$ - wymagany czas produkcji 1 sztuki produktu (w godzinach) w danym procesie obróbki
+
+$$
+PRODUCTION\_TIME = 
+    \begin{bmatrix}
+        0,4  & 0,6  & 0    & 0 \\
+        0,2  & 0,1  & 0    & 0,6 \\
+        0,1  & 0    & 0,7  &  0 \\
+        0,06 & 0,04 & 0    &  0,05 \\
+        0    & 0,05 & 0,02 &  0
+    \end{bmatrix}
+$$
+
+- $EXPECTED\_INCOME\_PER\_PRODUCT[p]\ dla \ p \in PRODUCTS$ - średni dochód ze sprzedaży produktów (w zł/sztukę)
+
+TODO
+
+- $SELL\_LIMIT[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - ograniczenia rynkowe na liczbę sprzedawanych produktów w danym miesiącu
+
+$$
+SELL\_LIMIT = 
+    \begin{bmatrix}
+        200 & 0   & 100 & 200 \\
+        300 & 100 & 200 & 200 \\
+        0   & 300 & 100 & 200
+    \end{bmatrix}
+$$
+
+### Zmienne decyzyjne
+
+- $production[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - ilość danego produktu wytworzona w ciągu miesiąca
+- $sale[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - oczekiwana ilość produktu, sprzedana w ciągu miesiąca
+- $left\_over[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - oczekiwana ilość produktu, która pozostanie w magazynie na koniec miesiąca
+- $income$ - całkowity dochód.
+
+### Ograniczenia
+
+- Czas produkcji wszystkich przedmiotów w miesiącu nie może przekroczyć dostępności maszyn w miesiącu:
+
+$$
+\forall_{m \in MONTHS,\ i \in PROCESSES} \Sigma_{p \in PRODUCTS}\ (production[p][m] * PRODUCTION\_TIME[p][i]) \le WORKING\_HOURS\_IN\_A\_MONTH * PROCESS\_TOOLS[p]
+$$
+
+- Pozostałości ze sprzedaży są różnicą sumy produktów przechowywanych z poprzedniego miesiąca i wyprodukowanych oraz sprzedanych:
+
+$$
+\forall_{(s, c) \in MONTH\_SUCCESSORS,\ p \in PRODUCTS}\ left\_over[p][c] = production[p][c] + left\_over[p][s] - sale[p][c] 
+$$
+
+- Firma na początku stycznia nie posiada żadnych zapasów, więc pozostałości przedmiotów w pierwszym miesiącu są równe 0:
+
+$$
+\forall_{p \in PRODUCTS}\ left\_over[p][styczeń] = 0
+$$
+
+- Dochodem całkowitym jest różnica dochodu ze sprzedaży oraz kosztu magazynowania.
+
+$$
+income = \Sigma_{p \in PRODUCTS,\ m \in MONTHS}\ (sale[p][m] * EXPECTED\_INCOME\_PER\_PRODUCT[p] - left\_over[p][m] * MONTHLY\_PRODUCT\_STORAGE\_COST)
+$$
+
+- Ograniczenia rynkowe na liczbę sprzedawanych produktów w danym miesiącu nie mogą być przekroczone:
+
+$$
+\forall_{p \in PRODUCTS,\ m \in MONTHS}\ sale[p][m] < SELL\_LIMIT[p][m]
+$$
+
+- Produkt $P_4$ musi być sprzedawany w liczbie sztuk nie mniejszej niż suma sprzedawanych produktów $P_1$ i $P_2$:
+
+$$
+\forall_{m \in MONTHS}\ sale[P_4][m] \ge sale[P_1][m] + sale[P_2][m]
+$$
+
+- Istnieje możliwość składowania do $PRODUCT\_STORAGE\_LIMIT$ sztuk każdego produktu:
+
+$$
+\forall_{p \in PRODUCTS,\ m \in MONTHS}\ left\_over[p][m] \le PRODUCT\_STORAGE\_LIMIT
+$$
+
+- Pożądane jest, aby pod koniec marca firma posiadała po $PRODUCT\_MINIMAL\_LEFT\_OVER$ sztuk każdego produktu pod koniec marca:
+
+$$
+\forall_{p \in PRODUCTS}\ left\_over[p][marzec] \ge PRODUCT\_MINIMAL\_LEFT\_OVER
+$$
+
+### Funkcje oceny
+
+Maksymalizujemy dochód z produkcji, zatem funkcją oceny jest: 
+$$
+max(income)
+$$
 
 ## Sformułowanie modelu
 
