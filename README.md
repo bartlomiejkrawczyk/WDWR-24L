@@ -140,7 +140,7 @@ $$
 - $PRODUCTS = \{P_1, P_2, P_3, P_4\}$ - zbiór produktów,
 - $PROCESSES = \{szlifowanie, wiercenie\_pionowe, wiercenie\_poziome, frezowanie, toczenie\}$ - zbiór procesów,
 - $MONTHS = \{styczeń, luty, marzec\}$ - zbiór miesięcy,
-- $MONTH\_SUCCESSORS = \{(grudzień, styczeń), (styczeń, luty), (luty, marzec)\}$ - zbiór miesięcy oraz ich następników.
+- $MONTH\_PREDECESSORS = \{(grudzień, styczeń), (styczeń, luty), (luty, marzec)\}$ - zbiór miesięcy oraz ich poprzedników.
 
 ### Parametry
 
@@ -206,7 +206,7 @@ $$
 - Pozostałości ze sprzedaży są różnicą sumy produktów przechowywanych z poprzedniego miesiąca i wyprodukowanych oraz sprzedanych:
 
 $$
-\forall_{(s, c) \in MONTH\_SUCCESSORS,\ p \in PRODUCTS}\ left\_over[p][c] = production[p][c] + left\_over[p][s] - sale[p][c]
+\forall_{(s, c) \in MONTH\_PREDECESSORS,\ p \in PRODUCTS}\ left\_over[p][c] = production[p][c] + left\_over[p][s] - sale[p][c]
 $$
 
 - Firma na początku stycznia nie posiada żadnych zapasów, więc pozostałości przedmiotów z grudnia są równe 0:
@@ -243,6 +243,24 @@ $$
 
 $$
 \forall_{p \in PRODUCTS}\ left\_over[p][marzec] \ge PRODUCT\_MINIMAL\_LEFT\_OVER
+$$
+
+- Produkcja nie może być negatywna:
+
+$$
+\forall_{p \in PRODUCTS,\ m \in MONTHS}\ production[p][m] >= 0
+$$
+
+- Sprzedaż nie może być negatywna:
+
+$$
+\forall_{p \in PRODUCTS,\ m \in MONTHS}\ sale[p][m] >= 0
+$$
+
+- Pozostałości w magazynach nie mogą być negatywne:
+
+$$
+\forall_{p \in PRODUCTS,\ m \in MONTHS}\ left\_over[p][m] >= 0
 $$
 
 <!-- TODO: zastanów się nad dodaniem warunków na dodatniość produkcji, pozostałości i sprzedaży -->
