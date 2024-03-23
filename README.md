@@ -215,7 +215,7 @@ $$
 \forall_{p \in PRODUCTS}\ left\_over[p][grudzień] = 0
 $$
 
-- Dochodem całkowitym jest różnica dochodu ze sprzedaży oraz kosztu magazynowania.
+- Dochodem całkowitym jest różnica dochodu ze sprzedaży oraz kosztu magazynowania:
 
 $$
 income = \Sigma_{p \in PRODUCTS,\ m \in MONTHS}\ (sale[p][m] * EXPECTED\_INCOME\_PER\_PRODUCT[p] - left\_over[p][m] * MONTHLY\_PRODUCT\_STORAGE\_COST)
@@ -262,8 +262,6 @@ $$
 $$
 \forall_{p \in PRODUCTS,\ m \in MONTHS}\ left\_over[p][m] >= 0
 $$
-
-<!-- TODO: zastanów się nad dodaniem warunków na dodatniość produkcji, pozostałości i sprzedaży -->
 
 ### Funkcje oceny
 
