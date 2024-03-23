@@ -192,7 +192,7 @@ $$
 
 - $production[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - ilość danego produktu wytworzona w ciągu miesiąca,
 - $sale[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - oczekiwana ilość produktu, sprzedana w ciągu miesiąca,
-- $left\_over[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS \cup \{grudzień\}  $ - ilość produktu, która pozostanie w magazynie na koniec miesiąca,
+- $left\_over[p][m]\ dla\ p \in PRODUCTS,\ m \in MONTHS \cup \{grudzień\}$ - ilość produktu, która pozostanie w magazynie na koniec miesiąca,
 - $income$ - całkowity dochód.
 
 ### Ograniczenia
@@ -218,7 +218,9 @@ $$
 - Dochodem całkowitym jest różnica dochodu ze sprzedaży oraz kosztu magazynowania:
 
 $$
-income = \Sigma_{p \in PRODUCTS,\ m \in MONTHS}\ (sale[p][m] * EXPECTED\_INCOME\_PER\_PRODUCT[p] - left\_over[p][m] * MONTHLY\_PRODUCT\_STORAGE\_COST)
+income = \Sigma_{p \in PRODUCTS,\ m \in MONTHS} \\
+(sale[p][m] * EXPECTED\_INCOME\_PER\_PRODUCT[p] \\ 
+- left\_over[p][m] * MONTHLY\_PRODUCT\_STORAGE\_COST)
 $$
 
 - Ograniczenia rynkowe na liczbę sprzedawanych produktów w danym miesiącu nie mogą być przekroczone:
