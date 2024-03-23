@@ -1,0 +1,42 @@
+data;
+
+set PRODUCTS := P1 P2 P3 P4;
+set PROCESSES := szlifowanie wiercenie_pionowe wiercenie_poziome frezowanie toczenie;
+set MONTHS = styczen luty marzec;
+set MONTHS_WITH_DECEMBER = grudzien styczen luty;
+set ALL_MONTHS = grudzien styczen luty marzec;
+set MONTH_PREDECESSORS := (grudzien, styczen) (styczen, luty) (luty, marzec);
+
+param WORKING_HOURS_IN_A_MONTH := 384;
+param PRODUCT_STORAGE_LIMIT := 200;
+param MONTHLY_PRODUCT_STORAGE_COST := 1;
+param PRODUCT_MINIMAL_LEFT_OVER := 50;
+
+param PROCESS_TOOLS :=
+	szlifowanie       4,
+	wiercenie_pionowe 2,
+	wiercenie_poziome 3,
+	frezowanie        1,
+	toczenie          1;
+
+param PRODUCTION_TIME 
+	:                 P1   P2   P3   P4   :=
+	szlifowanie       0.4  0.6  0    0
+	wiercenie_pionowe 0.2  0.1  0    0.6
+	wiercenie_poziome 0.1  0    0.7  0
+	frezowanie        0.06 0.04 0    0.05
+	toczenie          0    0.05 0.02 0    ;
+
+param EXPECTED_INCOME_PER_PRODUCT :=
+	P1 8.6274568376001   ,
+	P2 8.304864144322744 ,
+	P3 7.605077266035032 ,
+	P4 6.421595377441505 ;
+
+param SELL_LIMIT 
+	:        P1   P2   P3   P4  :=
+	styczen  200  0    100  200
+	luty     300  100  200  200
+	marzec   0    300  100  200 ;
+
+end;
