@@ -113,3 +113,8 @@ subject to mean_absolute_deviation_constraint:
 
 minimize min_mad_risk:
 	mad_risk;
+
+#maximize max_income_constraint:
+#	average_income;
+
+#############################################################################

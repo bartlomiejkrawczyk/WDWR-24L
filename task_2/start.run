@@ -8,10 +8,10 @@ option cplex_options "time=180";
 model task.mod;
 data parameters.dat;
 
-param MIN_DETERMINED_INCOME = 0;
-param MAX_DETERMINED_INCOME = 10000;
+param MIN_DETERMINED_INCOME = -200;
+param MAX_DETERMINED_INCOME = 12000;
 
-param SAMPLES = 101;
+param SAMPLES = 119;
 
 param STEP := (MAX_DETERMINED_INCOME - MIN_DETERMINED_INCOME) / (SAMPLES - 1);
 
