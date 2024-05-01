@@ -1,8 +1,12 @@
-# Wspomaganie decyzji w warunkach ryzyka
-
-```
-Bartłomiej Krawczyk, 310774
-```
+---
+title: "Wspomaganie decyzji w warunkach ryzyka"
+author: Bartłomiej Krawczyk, 310774
+geometry: margin=2cm
+header-includes:
+    - \usepackage{float}
+    - \floatplacement{figure}{H}
+    - \renewcommand{\figurename}{Rysunek}
+---
 
 ## Zadanie
 
@@ -69,6 +73,8 @@ Przedsiębiorstwo pracuje 6 dni w tygodniu w systemie dwóch zmian. Każda zmian
     - Wyznaczyć obraz zbioru rozwiązań efektywnych w przestrzeni ryzyko–zysk.
     - Wskazać rozwiązania efektywne minimalnego ryzyka i maksymalnego zysku. Jakie odpowiadają im wartości w przestrzeni ryzyko–zysk?
     - Wybrać trzy dowolne rozwiązania efektywne. Sprawdzić czy zachodzi pomiędzy nimi relacja dominacji stochastycznej pierwszego rzędu. Wyniki skomentować, odnieść do ogólnego przypadku.
+
+\newpage
 
 # Jednokryterialny model wyboru w warunkach ryzyka z wartością średnią jako miarą zysku
 
@@ -265,7 +271,7 @@ $$
 \forall_{p \in PRODUCTS,\ m \in MONTHS}\ left\_over[p][m] >= 0
 $$
 
-### Funkcje oceny
+### Funkcja oceny
 
 Firma chce osiągnąć największy zysk. Maksymalizujemy dochód z produkcji, zatem funkcją oceny jest: 
 $$
@@ -286,3 +292,9 @@ $$
 ## Wyniki
 
 <!-- Omówienie wyników z nawiązaniem do teorii. -->
+
+\newpage
+
+# Dwukryterialny model zysku i ryzyka z wartością średnią jako miarą zysku i odchyleniem przeciętnym jako miarą ryzyka
+
+
