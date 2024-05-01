@@ -33,7 +33,7 @@ var sale{p in PRODUCTS, m in MONTHS} integer >= 0;
 # Pozosta³oœci w magazynach nie mog¹ byæ negatywne:
 var left_over{p in PRODUCTS, m in ALL_MONTHS} integer >= 0;
 
-var income >= 0.0;
+var income;
 
 #############################################################################
 
