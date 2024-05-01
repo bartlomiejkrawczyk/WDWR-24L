@@ -28,7 +28,7 @@ def calculate_expected_value_for_truncated_t_student_distribution(
         /
         (
             2
-            * (f_v(b) - f_v(a))
+            * (f_v(b) - f_v(a))  # type: ignore
             * Γ(v / 2)
             * Γ(1 / 2)
         )
