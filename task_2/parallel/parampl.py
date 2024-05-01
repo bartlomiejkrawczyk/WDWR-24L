@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# pyright: basic
 
 # Parampl
 # Author: Artur Olszak
