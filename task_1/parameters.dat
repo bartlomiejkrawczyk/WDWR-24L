@@ -38,3 +38,5 @@ param SELL_LIMIT
 	styczen  200  0    100  200
 	luty     300  100  200  200
 	marzec   0    300  100  200 ;
+
+end;

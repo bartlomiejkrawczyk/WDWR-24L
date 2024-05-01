@@ -1,0 +1,32 @@
+reset;
+
+option parampl_options "solver=cplex";
+option parampl_queue_id "powelltest";
+
+option solver cplex;
+option cplex_options "time=180";
+
+param MAX_INCOME;
+
+model task.mod;
+data parameters.dat;
+
+param MIN_DETERMINED_INCOME = -10000;
+param MAX_DETERMINED_INCOME = 10000;
+
+param SAMPLES = 11;
+
+param STEP := (MAX_DETERMINED_INCOME - MIN_DETERMINED_INCOME) / (SAMPLES - 1);
+
+for {i in 0..(SAMPLES - 1)} {
+    let MAX_INCOME := MIN_DETERMINED_INCOME + i * STEP;
+    commands parallel/paramplsub;
+}
+
+for {i in 0..(SAMPLES - 1)} {
+    commands parallel/paramplret;
+    let MAX_INCOME := MIN_DETERMINED_INCOME + i * STEP;
+    display MAX_INCOME;
+    display income;
+    display risk;
+}

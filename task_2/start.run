@@ -1,0 +1,24 @@
+reset;
+
+option solver cplex;
+option cplex_options "time=180";
+
+param MAX_INCOME;
+
+model task.mod;
+data parameters.dat;
+
+param MIN_DETERMINED_INCOME = -10000;
+param MAX_DETERMINED_INCOME = 10000;
+
+param SAMPLES = 101;
+
+param STEP := (MAX_DETERMINED_INCOME - MIN_DETERMINED_INCOME) / (SAMPLES - 1);
+
+for {i in 0..(SAMPLES - 1)} {
+    let MAX_INCOME := MIN_DETERMINED_INCOME + i * STEP;
+    display MAX_INCOME;
+    solve;
+    display income;
+    display risk;
+}
