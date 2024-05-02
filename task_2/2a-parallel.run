@@ -1,0 +1,49 @@
+reset;
+
+option parampl_options "solver=cplex";
+option parampl_queue_id "wdwr";
+
+option solver cplex;
+option cplex_options "time=180";
+
+param MIN_AVERAGE_INCOME;
+
+model task.mod;
+data parameters.dat;
+
+#############################################################################
+
+# Warunek na minimalny zadany poziom zarobków:
+subject to min_average_income_constraint:
+	average_income >= MIN_AVERAGE_INCOME;
+
+#############################################################################
+
+# Minimalizujemy ryzyko przy zadanym poziomie zarobków:
+minimize min_mad_risk:
+	mad_risk;
+
+#############################################################################
+
+param MIN_DETERMINED_INCOME = -200;
+param MAX_DETERMINED_INCOME = 11553;
+
+param STEP := 100;
+param SAMPLES = 119;
+
+param value;
+
+for {i in 0..(SAMPLES - 1)} {
+	let value := MIN_DETERMINED_INCOME + i * STEP;
+    let MIN_AVERAGE_INCOME := if value > MAX_DETERMINED_INCOME then MAX_DETERMINED_INCOME else value;
+    commands parallel/paramplsub;
+}
+
+for {i in 0..(SAMPLES - 1)} {
+    commands parallel/paramplret;
+	let value := MIN_DETERMINED_INCOME + i * STEP;
+    let MIN_AVERAGE_INCOME := if value > MAX_DETERMINED_INCOME then MAX_DETERMINED_INCOME else value;
+    display MIN_AVERAGE_INCOME;
+    display average_income;
+    display mad_risk;
+}

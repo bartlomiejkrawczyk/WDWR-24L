@@ -1,0 +1,9 @@
+data;
+
+set SOLUTIONS := S1 S2 S3;
+param MIN_INCOME_TARGETS :=
+	S1 11550,
+	S2 5000,
+	S3 -200;
+
+end;

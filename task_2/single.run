@@ -1,0 +1,18 @@
+reset;
+
+option solver cplex;
+option cplex_options "time=180";
+
+model task.mod;
+data parameters.dat;
+
+#############################################################################
+
+maximize max_income_constraint:
+	average_income;
+
+#############################################################################
+
+solve;
+display average_income;
+display mad_risk;

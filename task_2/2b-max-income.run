@@ -1,0 +1,42 @@
+reset;
+
+option solver cplex;
+option cplex_options "time=180";
+
+model task.mod;
+data parameters.dat;
+
+
+#############################################################################
+
+maximize max_income_constraint:
+	average_income;
+
+#############################################################################
+
+solve;
+
+display average_income;
+display mad_risk;
+
+param MIN_AVERAGE_INCOME;
+
+#############################################################################
+
+# Warunek na minimalny zadany poziom zarobków:
+subject to min_average_income_constraint:
+	average_income >= MIN_AVERAGE_INCOME;
+
+#############################################################################
+
+minimize min_mad_risk:
+	mad_risk;
+
+#############################################################################
+
+let MIN_AVERAGE_INCOME := average_income;
+
+solve;
+
+display average_income;
+display mad_risk;

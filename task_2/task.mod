@@ -12,7 +12,6 @@ param PRODUCT_STORAGE_LIMIT;
 param MONTHLY_PRODUCT_STORAGE_COST;
 param PRODUCT_MINIMAL_LEFT_OVER;
 param SCENARIOS_NO;
-param MIN_AVERAGE_INCOME;
 
 param PROCESS_TOOLS{p in PROCESSES};
 
@@ -97,10 +96,6 @@ subject to scenario_income_constraint{s in SCENARIOS}:
 subject to average_income_constraint:
 	average_income = 1 / SCENARIOS_NO * sum{s in SCENARIOS} scenario_income[s];
 
-# Warunek na minimalny zadany poziom zarobków:
-subject to min_average_income_constraint:
-	average_income >= MIN_AVERAGE_INCOME;
-
 # Wyliczenie pomoczniczych odchy³ek:
 subject to income_deviation{s in SCENARIOS}:
 	sum{d in DEVIATION_MULTIPLIERS} deviation[s, d] * d = average_income - scenario_income[s];
@@ -108,13 +103,3 @@ subject to income_deviation{s in SCENARIOS}:
 # Wyliczenie przeciêtnego odchylenia:
 subject to mean_absolute_deviation_constraint:
 	mad_risk = 1 / SCENARIOS_NO * sum{t in SCENARIOS, d in DEVIATION_MULTIPLIERS} deviation[t, d];
-
-#############################################################################
-
-minimize min_mad_risk:
-	mad_risk;
-
-#maximize max_income_constraint:
-#	average_income;
-
-#############################################################################

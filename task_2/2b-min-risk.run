@@ -1,0 +1,42 @@
+reset;
+
+option solver cplex;
+option cplex_options "time=180";
+
+model task.mod;
+data parameters.dat;
+
+
+#############################################################################
+
+minimize min_mad_risk:
+	mad_risk;
+
+#############################################################################
+
+solve;
+
+display average_income;
+display mad_risk;
+
+param MAX_MAD_RISK;
+
+#############################################################################
+
+# Warunek na maksymalny zadany poziom ryzyka:
+subject to max_mad_risk_constraint:
+	mad_risk <= MAX_MAD_RISK;
+
+#############################################################################
+
+maximize max_income_constraint:
+	average_income;
+
+#############################################################################
+
+let MAX_MAD_RISK := mad_risk;
+
+solve;
+
+display average_income;
+display mad_risk;

@@ -297,4 +297,26 @@ $$
 
 # Dwukryterialny model zysku i ryzyka z wartością średnią jako miarą zysku i odchyleniem przeciętnym jako miarą ryzyka
 
+## Zbiory
+
+## Parametry
+
+## Zmienne decyzyjne
+
+## Ograniczenia
+
+## Funkcje oceny
+
+> Wyznaczyć obraz zbioru rozwiązań efektywnych w przestrzeni ryzyko–zysk.
+
+> Wskazać rozwiązania efektywne minimalnego ryzyka i maksymalnego zysku. Jakie odpowiadają im wartości w przestrzeni ryzyko–zysk?
+
+typ \ wartość    | zysk  | ryzyko
+-----------------|-------|--------
+minimalne ryzyko | -200  | 0
+maksymalny zysk  | 11553 | 735.498
+
+Rozwiązania te zostały osiągnięte poprzez ustalenie funkcji celu odpowiednio na minimalizację ryzyka w pierwszym przypadku i maksymalizację zysku w drugim przypadku. Następnie, aby zapobiec wyborze nie efektywnego rozwiązania ustalono poziom ryzyka (w pierwszym przypadku) i zysku (w drugim przypadku) na stały poziom ustalony wcześniej i uruchomiono ponownie optymalizację. Tym razem w pierwszym przypadku maksymalizując zysk przy stałym ryzyku i w drugim przypadku minimalizując ryzyko przy stałym zysku.
+
+> Wybrać trzy dowolne rozwiązania efektywne. Sprawdzić czy zachodzi pomiędzy nimi relacja dominacji stochastycznej pierwszego rzędu. Wyniki skomentować, odnieść do ogólnego przypadku.
 

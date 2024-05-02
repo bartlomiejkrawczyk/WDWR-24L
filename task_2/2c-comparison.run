@@ -1,0 +1,40 @@
+reset;
+
+option parampl_options "solver=cplex";
+option parampl_queue_id "wdwr";
+
+option solver cplex;
+option cplex_options "time=180";
+
+param MIN_AVERAGE_INCOME;
+
+model task.mod;
+data parameters.dat;
+
+#############################################################################
+
+# Warunek na minimalny zadany poziom zarobków:
+subject to min_average_income_constraint:
+	average_income >= MIN_AVERAGE_INCOME;
+
+#############################################################################
+
+# Minimalizujemy ryzyko przy zadanym poziomie zarobków:
+minimize min_mad_risk:
+	mad_risk;
+
+#############################################################################
+
+set SOLUTIONS;
+param MIN_INCOME_TARGETS{s in SOLUTIONS};;
+	
+data 2c-parameters.dat;
+
+for {s in SOLUTIONS} {
+	let MIN_AVERAGE_INCOME := MIN_INCOME_TARGETS[s];
+    solve;
+    display MIN_AVERAGE_INCOME;
+    display average_income;
+    display mad_risk;
+    display scenario_income;
+}
