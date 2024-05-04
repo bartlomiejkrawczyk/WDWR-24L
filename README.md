@@ -367,7 +367,7 @@ $$
 
 Na wykresie zostały przedstawione 119 rozwiązania efektywne zadania:
 
-![Obraz zbioru rozwiązań efektywnych w przestrzeni ryzyko–zysk]()
+![Obraz zbioru rozwiązań efektywnych w przestrzeni ryzyko–zysk](./img/risk-income.png)
 
 > Wskazać rozwiązania efektywne minimalnego ryzyka i maksymalnego zysku. Jakie odpowiadają im wartości w przestrzeni ryzyko–zysk?
 
