@@ -299,15 +299,75 @@ $$
 
 ## Zbiory
 
+- $SCENARIOS = \{1, 2, ..., 100\}$ - zbiór liczb reprezentujących numer scenariusza,
+- $DEVIATION_MULTIPLIERS = \{1, -1\}$ - pomocniczy zbiór pozwalający na uproszczenia zapisu realizacji odchyłek.
+
 ## Parametry
+
+- $SCENARIOS\_NO = 100$ - liczba wszystkich testowanych scenariuszy,
+
+Pozbywamy się wcześniej ustalonych parametrów $EXPECTED\_INCOME\_PER\_PRODUCT$ oraz wszystkich ograniczeń, w których te parametry były wykorzystane. Tym razem definiujemy zysk oddzielnie dla każdego scenariusza:
+
+- $SCENARIOS\_INCOME\_PER\_PRODUCT[s][p]\ dla\ s \in SCENARIOS,\ p \in PRODUCTS$ - wygenerowane z obciętego rozkładu t-studenta wartości zarobków dla poszczególnych produktów.
 
 ## Zmienne decyzyjne
 
+Zmienna $income$ została zastąpiona przez zysk wyliczany dla poszczególnych scenariuszy:
+
+- $scenario\_income[s],\ s \in\ SCENARIOS$ - całkowity zysk osiągnięty w przypadku danego scenariusza $s$,
+- $deviation[s][d],\ s \in\ SCENARIOS,\ d \in\ DEVIATION_MULTIPLIERS$ - macierz dodatnich i ujemnych odchyłek zarobków z poszczególnych scenariuszy od średniej zarobków na bazie wszystkich scenariuszy. Wartości tych odchyłek są potrzebne przy wyliczaniu wartości bezwzględnej różnicy zysków ze scenariuszy i średnich zysków,
+- $mad_risk$ - (MAD - ang. Mean Absolute Deviation) miara ryzyka wyliczona na bazie przeciętnego odchylenia zysku ze scenariuszy i średniego zysku.
+
 ## Ograniczenia
+
+- Dochodem dla danego scenariusza jest różnica dochodu ze sprzedaży oraz kosztu magazynowania:
+
+$$
+scenario\_income[s] = 
+\sum_{p \in PRODUCTS, m \in MONTHS} sale[p][m] * SCENARIOS\_INCOME\_PER\_PRODUCT[s][p] - left\_over[p][m] * MONTHLY\_PRODUCT\_STORAGE\_COST
+$$
+
+- Średni zysk jest wyliczany jako średnia zarobków ze wszystkich scenariuszy:
+
+$$
+average\_income = 1 / SCENARIOS\_NO * \sum_{s \in SCENARIOS} scenario\_income[s]
+$$
+
+- Wyliczenie pomocniczych odchyłek:
+
+$$
+\forall{s \in SCENARIOS}: \sum{d \in DEVIATION\_MULTIPLIERS} deviation[s][d] * d = average\_income - scenario\_income[s]
+$$
+
+- Ustalenie przeciętnego odchylenia, jako średniej wartości bezwzględnej odchyleń zysków ze scenariuszy i średniego zysku:
+
+$$
+mad\_risk = 1 / SCENARIO\_NO * \sum_{s \in SCENARIOS, d \in DEVIATION\_MULTIPLIERS} deviation[s, d]
+$$
 
 ## Funkcje oceny
 
 > Wyznaczyć obraz zbioru rozwiązań efektywnych w przestrzeni ryzyko–zysk.
+
+W celu wyznaczenia możliwych rozwiązań efektywnych dwukryterialnego zadania w przestrzeni ryzyko-zysk podzielono zadanie na kilka mniejszych zadań optymalizacyjnych. 
+
+Chcąc zwizualizować rozwiązania poszczególnych zadań na wykresie został zdefiniowany nowy parametr $MIN\_AVERAGE\_INCOME$ oraz zostało dodane dodatkowe ograniczenie na średni poziom zysku:
+
+$$
+average\_income >= MIN\_AVERAGE\_INCOME
+$$
+
+Iteracja po równo odległych osiągalnych poziomach zysku z zakresu [-200; 11553] pozwala zwizualizować te rozwiązania efektywne w przestrzeni.
+
+Dla tak zdefiniowanych poszczególnych zadań została ustalona funkcja oceny na minimalizację miary ryzyka:
+
+$$
+min mad_risk
+$$
+
+Na wykresie zostały przedstawione 119 rozwiązania efektywne zadania:
+
+![Obraz zbioru rozwiązań efektywnych w przestrzeni ryzyko–zysk]()
 
 > Wskazać rozwiązania efektywne minimalnego ryzyka i maksymalnego zysku. Jakie odpowiadają im wartości w przestrzeni ryzyko–zysk?
 
@@ -316,7 +376,7 @@ typ \ wartość    | zysk  | ryzyko
 minimalne ryzyko | -200  | 0
 maksymalny zysk  | 11553 | 735.498
 
-Rozwiązania te zostały osiągnięte poprzez ustalenie funkcji celu odpowiednio na minimalizację ryzyka w pierwszym przypadku i maksymalizację zysku w drugim przypadku. Następnie, aby zapobiec wyborze nie efektywnego rozwiązania ustalono poziom ryzyka (w pierwszym przypadku) i zysku (w drugim przypadku) na stały poziom ustalony wcześniej i uruchomiono ponownie optymalizację. Tym razem w pierwszym przypadku maksymalizując zysk przy stałym ryzyku i w drugim przypadku minimalizując ryzyko przy stałym zysku.
+Rozwiązania te zostały osiągnięte poprzez ustalenie funkcji celu odpowiednio na minimalizację ryzyka w pierwszym przypadku i maksymalizację zysku w drugim przypadku. Następnie, aby zapobiec wyborze nie efektywnego rozwiązania ustalono poziom ryzyka (w pierwszym przypadku) i zysku (w drugim przypadku) na stały poziom ustalony w poprzednim kroku i uruchomiono ponownie optymalizację. Tym razem w pierwszym przypadku maksymalizując zysk przy stałym ryzyku i w drugim przypadku minimalizując ryzyko przy stałym zysku.
 
 > Wybrać trzy dowolne rozwiązania efektywne. Sprawdzić czy zachodzi pomiędzy nimi relacja dominacji stochastycznej pierwszego rzędu. Wyniki skomentować, odnieść do ogólnego przypadku.
 

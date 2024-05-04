@@ -102,4 +102,4 @@ subject to income_deviation{s in SCENARIOS}:
 
 # Wyliczenie przeciêtnego odchylenia:
 subject to mean_absolute_deviation_constraint:
-	mad_risk = 1 / SCENARIOS_NO * sum{t in SCENARIOS, d in DEVIATION_MULTIPLIERS} deviation[t, d];
+	mad_risk = 1 / SCENARIOS_NO * sum{s in SCENARIOS, d in DEVIATION_MULTIPLIERS} deviation[s, d];

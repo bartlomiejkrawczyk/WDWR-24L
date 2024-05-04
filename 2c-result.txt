@@ -1,0 +1,1423 @@
+CPLEX 22.1.1.0: optimal integer solution; objective -1.421085472e-13
+0 MIP simplex iterations
+0 branch-and-bound nodes
+MIN_AVERAGE_INCOME = -200
+
+average_income = -200
+
+mad_risk = 0
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution; objective 4.747530709
+23417 MIP simplex iterations
+12151 branch-and-bound nodes
+MIN_AVERAGE_INCOME = -100
+
+average_income = -96.2865
+
+mad_risk = 4.74753
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 9.041219564
+84002 MIP simplex iterations
+49601 branch-and-bound nodes
+absmipgap = 0.000635835, relmipgap = 7.03263e-05
+MIN_AVERAGE_INCOME = 0
+
+average_income = 0.117307
+
+mad_risk = 9.04122
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 13.54279561
+869709 MIP simplex iterations
+572028 branch-and-bound nodes
+absmipgap = 0.000948536, relmipgap = 7.00399e-05
+MIN_AVERAGE_INCOME = 100
+
+average_income = 101.229
+
+mad_risk = 13.5428
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 18.04091032
+3931749 MIP simplex iterations
+2207207 branch-and-bound nodes
+absmipgap = 0.0768467, relmipgap = 0.00425958
+MIN_AVERAGE_INCOME = 200
+
+average_income = 200.105
+
+mad_risk = 18.0409
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 22.42292051
+24196 MIP simplex iterations
+20491 branch-and-bound nodes
+absmipgap = 0.00195009, relmipgap = 8.69685e-05
+MIN_AVERAGE_INCOME = 300
+
+average_income = 300.045
+
+mad_risk = 22.4229
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 26.96994462
+3747403 MIP simplex iterations
+1789063 branch-and-bound nodes
+absmipgap = 0.0668465, relmipgap = 0.00247855
+MIN_AVERAGE_INCOME = 400
+
+average_income = 400.222
+
+mad_risk = 26.9699
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 31.39880652
+1138979 MIP simplex iterations
+797559 branch-and-bound nodes
+absmipgap = 0.00310365, relmipgap = 9.88463e-05
+MIN_AVERAGE_INCOME = 500
+
+average_income = 500.163
+
+mad_risk = 31.3988
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 35.89621374
+2889137 MIP simplex iterations
+2099458 branch-and-bound nodes
+absmipgap = 0.00335423, relmipgap = 9.34426e-05
+MIN_AVERAGE_INCOME = 600
+
+average_income = 600.104
+
+mad_risk = 35.8962
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 40.4132794
+5147893 MIP simplex iterations
+3552282 branch-and-bound nodes
+absmipgap = 0.0730138, relmipgap = 0.00180668
+MIN_AVERAGE_INCOME = 700
+
+average_income = 700.281
+
+mad_risk = 40.4133
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 44.84584102
+2587284 MIP simplex iterations
+2378502 branch-and-bound nodes
+absmipgap = 0.0039317, relmipgap = 8.76714e-05
+MIN_AVERAGE_INCOME = 800
+
+average_income = 800.091
+
+mad_risk = 44.8458
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 49.34316591
+4228637 MIP simplex iterations
+2881091 branch-and-bound nodes
+absmipgap = 0.0479166, relmipgap = 0.000971088
+MIN_AVERAGE_INCOME = 900
+
+average_income = 900.398
+
+mad_risk = 49.3432
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 53.8085485
+3686087 MIP simplex iterations
+3511879 branch-and-bound nodes
+absmipgap = 0.0304141, relmipgap = 0.000565228
+MIN_AVERAGE_INCOME = 1000
+
+average_income = 1000.21
+
+mad_risk = 53.8085
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 58.28926634
+6667350 MIP simplex iterations
+3622489 branch-and-bound nodes
+absmipgap = 0.0222961, relmipgap = 0.000382508
+MIN_AVERAGE_INCOME = 1100
+
+average_income = 1100.52
+
+mad_risk = 58.2893
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 62.79761304
+5195437 MIP simplex iterations
+3607480 branch-and-bound nodes
+absmipgap = 0.057733, relmipgap = 0.000919351
+MIN_AVERAGE_INCOME = 1200
+
+average_income = 1200.33
+
+mad_risk = 62.7976
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 67.25180151
+5971548 MIP simplex iterations
+3734482 branch-and-bound nodes
+absmipgap = 0.0378514, relmipgap = 0.000562831
+MIN_AVERAGE_INCOME = 1300
+
+average_income = 1300.5
+
+mad_risk = 67.2518
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 71.74977566
+3199433 MIP simplex iterations
+3011279 branch-and-bound nodes
+absmipgap = 0.0481252, relmipgap = 0.000670736
+MIN_AVERAGE_INCOME = 1400
+
+average_income = 1400.44
+
+mad_risk = 71.7498
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 76.21645131
+8638959 MIP simplex iterations
+5099413 branch-and-bound nodes
+absmipgap = 0.0294687, relmipgap = 0.000386644
+MIN_AVERAGE_INCOME = 1500
+
+average_income = 1500.62
+
+mad_risk = 76.2165
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 80.69542602
+3908091 MIP simplex iterations
+2419599 branch-and-bound nodes
+absmipgap = 0.0393397, relmipgap = 0.000487508
+MIN_AVERAGE_INCOME = 1600
+
+average_income = 1600.56
+
+mad_risk = 80.6954
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 85.19493152
+2219040 MIP simplex iterations
+1607468 branch-and-bound nodes
+absmipgap = 0.0591647, relmipgap = 0.000694463
+MIN_AVERAGE_INCOME = 1700
+
+average_income = 1700.74
+
+mad_risk = 85.1949
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 89.65829432
+7919982 MIP simplex iterations
+4100376 branch-and-bound nodes
+absmipgap = 0.0405704, relmipgap = 0.0004525
+MIN_AVERAGE_INCOME = 1800
+
+average_income = 1800.55
+
+mad_risk = 89.6583
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 94.1563854
+7344259 MIP simplex iterations
+3327787 branch-and-bound nodes
+absmipgap = 0.0534896, relmipgap = 0.000568093
+MIN_AVERAGE_INCOME = 1900
+
+average_income = 1900.49
+
+mad_risk = 94.1564
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 98.61101138
+7349248 MIP simplex iterations
+4098317 branch-and-bound nodes
+absmipgap = 0.0308515, relmipgap = 0.000312861
+MIN_AVERAGE_INCOME = 2000
+
+average_income = 2000.66
+
+mad_risk = 98.611
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 103.1020358
+3879506 MIP simplex iterations
+3038635 branch-and-bound nodes
+absmipgap = 0.045236, relmipgap = 0.00043875
+MIN_AVERAGE_INCOME = 2100
+
+average_income = 2100.61
+
+mad_risk = 103.102
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 107.587948
+6576413 MIP simplex iterations
+3868078 branch-and-bound nodes
+absmipgap = 0.0482789, relmipgap = 0.000448738
+MIN_AVERAGE_INCOME = 2200
+
+average_income = 2200.78
+
+mad_risk = 107.588
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 112.0586441
+3679108 MIP simplex iterations
+2929410 branch-and-bound nodes
+absmipgap = 0.0379662, relmipgap = 0.000338806
+MIN_AVERAGE_INCOME = 2300
+
+average_income = 2300.72
+
+mad_risk = 112.059
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 116.5601731
+3602890 MIP simplex iterations
+2392111 branch-and-bound nodes
+absmipgap = 0.0616327, relmipgap = 0.000528763
+MIN_AVERAGE_INCOME = 2400
+
+average_income = 2400.66
+
+mad_risk = 116.56
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 121.0105544
+8983918 MIP simplex iterations
+4370223 branch-and-bound nodes
+absmipgap = 0.0323175, relmipgap = 0.000267063
+MIN_AVERAGE_INCOME = 2500
+
+average_income = 2500.71
+
+mad_risk = 121.011
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 125.5086455
+4040659 MIP simplex iterations
+3195912 branch-and-bound nodes
+absmipgap = 0.0381178, relmipgap = 0.000303706
+MIN_AVERAGE_INCOME = 2600
+
+average_income = 2600.65
+
+mad_risk = 125.509
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 129.9841686
+3741232 MIP simplex iterations
+3050560 branch-and-bound nodes
+absmipgap = 0.0446711, relmipgap = 0.000343666
+MIN_AVERAGE_INCOME = 2700
+
+average_income = 2700.83
+
+mad_risk = 129.984
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 134.4548646
+5510815 MIP simplex iterations
+4145675 branch-and-bound nodes
+absmipgap = 0.035283, relmipgap = 0.000262415
+MIN_AVERAGE_INCOME = 2800
+
+average_income = 2800.77
+
+mad_risk = 134.455
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 138.9577334
+8160853 MIP simplex iterations
+4600343 branch-and-bound nodes
+absmipgap = 0.0568963, relmipgap = 0.00040945
+MIN_AVERAGE_INCOME = 2900
+
+average_income = 2900.71
+
+mad_risk = 138.958
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 143.4247102
+3030533 MIP simplex iterations
+2559123 branch-and-bound nodes
+absmipgap = 0.0342136, relmipgap = 0.000238548
+MIN_AVERAGE_INCOME = 3000
+
+average_income = 3000.76
+
+mad_risk = 143.425
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 147.9154907
+5575828 MIP simplex iterations
+3260305 branch-and-bound nodes
+absmipgap = 0.0506505, relmipgap = 0.000342429
+MIN_AVERAGE_INCOME = 3100
+
+average_income = 3100.13
+
+mad_risk = 147.915
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 152.3943384
+4427628 MIP simplex iterations
+3245348 branch-and-bound nodes
+absmipgap = 0.0532627, relmipgap = 0.000349506
+MIN_AVERAGE_INCOME = 3200
+
+average_income = 3200.07
+
+mad_risk = 152.394
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 156.8727047
+3949962 MIP simplex iterations
+3195271 branch-and-bound nodes
+absmipgap = 0.0500028, relmipgap = 0.000318748
+MIN_AVERAGE_INCOME = 3300
+
+average_income = 3300.81
+
+mad_risk = 156.873
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 161.3565742
+4230851 MIP simplex iterations
+3486853 branch-and-bound nodes
+absmipgap = 0.0520274, relmipgap = 0.000322437
+MIN_AVERAGE_INCOME = 3400
+
+average_income = 3400.19
+
+mad_risk = 161.357
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 165.8431737
+5012396 MIP simplex iterations
+3399961 branch-and-bound nodes
+absmipgap = 0.0566725, relmipgap = 0.000341724
+MIN_AVERAGE_INCOME = 3500
+
+average_income = 3500.13
+
+mad_risk = 165.843
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 170.3079509
+4160126 MIP simplex iterations
+3826295 branch-and-bound nodes
+absmipgap = 0.0449426, relmipgap = 0.00026389
+MIN_AVERAGE_INCOME = 3600
+
+average_income = 3600.17
+
+mad_risk = 170.308
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 174.7905589
+4428532 MIP simplex iterations
+4044437 branch-and-bound nodes
+absmipgap = 0.0460529, relmipgap = 0.000263475
+MIN_AVERAGE_INCOME = 3700
+
+average_income = 3700.11
+
+mad_risk = 174.791
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 179.2707675
+3956093 MIP simplex iterations
+2894167 branch-and-bound nodes
+absmipgap = 0.0451366, relmipgap = 0.000251779
+MIN_AVERAGE_INCOME = 3800
+
+average_income = 3800.05
+
+mad_risk = 179.271
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 183.7391468
+4327057 MIP simplex iterations
+3391938 branch-and-bound nodes
+absmipgap = 0.0330348, relmipgap = 0.000179792
+MIN_AVERAGE_INCOME = 3900
+
+average_income = 3900.1
+
+mad_risk = 183.739
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 188.2098428
+3803639 MIP simplex iterations
+2765743 branch-and-bound nodes
+absmipgap = 0.0233035, relmipgap = 0.000123817
+MIN_AVERAGE_INCOME = 4000
+
+average_income = 4000.04
+
+mad_risk = 188.21
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 192.7145607
+3349080 MIP simplex iterations
+2698817 branch-and-bound nodes
+absmipgap = 0.0470866, relmipgap = 0.000244333
+MIN_AVERAGE_INCOME = 4100
+
+average_income = 4100.22
+
+mad_risk = 192.715
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 197.1584307
+119 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0125751, relmipgap = 6.37815e-05
+MIN_AVERAGE_INCOME = 4200
+
+average_income = 4200.03
+
+mad_risk = 197.158
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 201.6579386
+3534329 MIP simplex iterations
+3022865 branch-and-bound nodes
+absmipgap = 0.0308745, relmipgap = 0.000153103
+MIN_AVERAGE_INCOME = 4300
+
+average_income = 4300.1
+
+mad_risk = 201.658
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 206.1353673
+2300416 MIP simplex iterations
+1911506 branch-and-bound nodes
+absmipgap = 0.0282513, relmipgap = 0.000137052
+MIN_AVERAGE_INCOME = 4400
+
+average_income = 4400.15
+
+mad_risk = 206.135
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 210.6060634
+114 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0192873, relmipgap = 9.15799e-05
+MIN_AVERAGE_INCOME = 4500
+
+average_income = 4500.09
+
+mad_risk = 210.606
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 215.0767594
+129 MIP simplex iterations
+15 branch-and-bound nodes
+absmipgap = 0.0107312, relmipgap = 4.98949e-05
+MIN_AVERAGE_INCOME = 4600
+
+average_income = 4600.03
+
+mad_risk = 215.077
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 219.5586901
+114 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0134098, relmipgap = 6.1076e-05
+MIN_AVERAGE_INCOME = 4700
+
+average_income = 4700.07
+
+mad_risk = 219.559
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 224.0367082
+505 MIP simplex iterations
+313 branch-and-bound nodes
+absmipgap = 0.00861259, relmipgap = 3.84427e-05
+MIN_AVERAGE_INCOME = 4800
+
+average_income = 4800.01
+
+mad_risk = 224.037
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 228.538315
+4096038 MIP simplex iterations
+3620815 branch-and-bound nodes
+absmipgap = 0.0265221, relmipgap = 0.000116051
+MIN_AVERAGE_INCOME = 4900
+
+average_income = 4900.09
+
+mad_risk = 228.538
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 233.0105759
+114 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0214792, relmipgap = 9.21813e-05
+MIN_AVERAGE_INCOME = 5000
+
+average_income = 5000.13
+
+mad_risk = 233.011
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 237.4847028
+5159 MIP simplex iterations
+4964 branch-and-bound nodes
+absmipgap = 0.0158701, relmipgap = 6.68257e-05
+MIN_AVERAGE_INCOME = 5100
+
+average_income = 5100.07
+
+mad_risk = 237.485
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 241.9712214
+116 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0214511, relmipgap = 8.86513e-05
+MIN_AVERAGE_INCOME = 5200
+
+average_income = 5200.12
+
+mad_risk = 241.971
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 246.4596287
+4201034 MIP simplex iterations
+3499019 branch-and-bound nodes
+absmipgap = 0.0287299, relmipgap = 0.000116571
+MIN_AVERAGE_INCOME = 5300
+
+average_income = 5300.06
+
+mad_risk = 246.46
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 250.9375707
+536288 MIP simplex iterations
+464701 branch-and-bound nodes
+absmipgap = 0.0247761, relmipgap = 9.87341e-05
+MIN_AVERAGE_INCOME = 5400
+
+average_income = 5400.13
+
+mad_risk = 250.938
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 255.4231072
+3036892 MIP simplex iterations
+2589947 branch-and-bound nodes
+absmipgap = 0.029172, relmipgap = 0.000114211
+MIN_AVERAGE_INCOME = 5500
+
+average_income = 5500.18
+
+mad_risk = 255.423
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 259.9076233
+2933534 MIP simplex iterations
+2839623 branch-and-bound nodes
+absmipgap = 0.0340274, relmipgap = 0.000130921
+MIN_AVERAGE_INCOME = 5600
+
+average_income = 5600.12
+
+mad_risk = 259.908
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 264.3867543
+3287372 MIP simplex iterations
+2913192 branch-and-bound nodes
+absmipgap = 0.0328977, relmipgap = 0.00012443
+MIN_AVERAGE_INCOME = 5700
+
+average_income = 5700.16
+
+mad_risk = 264.387
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 268.874993
+2324177 MIP simplex iterations
+2658811 branch-and-bound nodes
+absmipgap = 0.0397437, relmipgap = 0.000147815
+MIN_AVERAGE_INCOME = 5800
+
+average_income = 5800.24
+
+mad_risk = 268.875
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 273.3556178
+2703862 MIP simplex iterations
+2418540 branch-and-bound nodes
+absmipgap = 0.0408155, relmipgap = 0.000149313
+MIN_AVERAGE_INCOME = 5900
+
+average_income = 5900.18
+
+mad_risk = 273.356
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 277.8356385
+1469506 MIP simplex iterations
+1356284 branch-and-bound nodes
+absmipgap = 0.0384748, relmipgap = 0.000138481
+MIN_AVERAGE_INCOME = 6000
+
+average_income = 6000.22
+
+mad_risk = 277.836
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 282.3237817
+3043475 MIP simplex iterations
+2812176 branch-and-bound nodes
+absmipgap = 0.0467699, relmipgap = 0.000165661
+MIN_AVERAGE_INCOME = 6100
+
+average_income = 6100.53
+
+mad_risk = 282.324
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 286.7925054
+2656220 MIP simplex iterations
+2456449 branch-and-bound nodes
+absmipgap = 0.0360218, relmipgap = 0.000125602
+MIN_AVERAGE_INCOME = 6200
+
+average_income = 6200.58
+
+mad_risk = 286.793
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 291.28665
+1848900 MIP simplex iterations
+1601544 branch-and-bound nodes
+absmipgap = 0.0501229, relmipgap = 0.000172074
+MIN_AVERAGE_INCOME = 6300
+
+average_income = 6300.52
+
+mad_risk = 291.287
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 295.7557612
+1872047 MIP simplex iterations
+1575427 branch-and-bound nodes
+absmipgap = 0.0382351, relmipgap = 0.000129279
+MIN_AVERAGE_INCOME = 6400
+
+average_income = 6400.56
+
+mad_risk = 295.756
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 300.2656142
+2050160 MIP simplex iterations
+1392143 branch-and-bound nodes
+absmipgap = 0.0501651, relmipgap = 0.000167069
+MIN_AVERAGE_INCOME = 6500
+
+average_income = 6500.53
+
+mad_risk = 300.266
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 304.831455
+1556195 MIP simplex iterations
+1360807 branch-and-bound nodes
+absmipgap = 0.04982, relmipgap = 0.000163435
+MIN_AVERAGE_INCOME = 6600
+
+average_income = 6600.11
+
+mad_risk = 304.831
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 309.4246029
+1878439 MIP simplex iterations
+1531133 branch-and-bound nodes
+absmipgap = 0.0567332, relmipgap = 0.000183351
+MIN_AVERAGE_INCOME = 6700
+
+average_income = 6700.31
+
+mad_risk = 309.425
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 314.0924152
+2512673 MIP simplex iterations
+1627001 branch-and-bound nodes
+absmipgap = 0.0976364, relmipgap = 0.000310852
+MIN_AVERAGE_INCOME = 6800
+
+average_income = 6800.17
+
+mad_risk = 314.092
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 318.7875345
+3126066 MIP simplex iterations
+1957873 branch-and-bound nodes
+absmipgap = 0.0446397, relmipgap = 0.00014003
+MIN_AVERAGE_INCOME = 6900
+
+average_income = 6900.65
+
+mad_risk = 318.788
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 323.5948323
+1955253 MIP simplex iterations
+1579727 branch-and-bound nodes
+absmipgap = 0.0691845, relmipgap = 0.0002138
+MIN_AVERAGE_INCOME = 7000
+
+average_income = 7000.44
+
+mad_risk = 323.595
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 328.3871234
+3103250 MIP simplex iterations
+2602444 branch-and-bound nodes
+absmipgap = 0.0361043, relmipgap = 0.000109944
+MIN_AVERAGE_INCOME = 7100
+
+average_income = 7100.49
+
+mad_risk = 328.387
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 333.5713752
+2918787 MIP simplex iterations
+2231251 branch-and-bound nodes
+absmipgap = 0.0381425, relmipgap = 0.000114346
+MIN_AVERAGE_INCOME = 7200
+
+average_income = 7200.01
+
+mad_risk = 333.571
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 338.8042605
+1959044 MIP simplex iterations
+1692740 branch-and-bound nodes
+absmipgap = 0.0825271, relmipgap = 0.000243583
+MIN_AVERAGE_INCOME = 7300
+
+average_income = 7300.32
+
+mad_risk = 338.804
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 343.9323325
+119 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0254513, relmipgap = 7.40009e-05
+MIN_AVERAGE_INCOME = 7400
+
+average_income = 7400.28
+
+mad_risk = 343.932
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 349.259829
+2349349 MIP simplex iterations
+2027250 branch-and-bound nodes
+absmipgap = 0.0928403, relmipgap = 0.00026582
+MIN_AVERAGE_INCOME = 7500
+
+average_income = 7500.25
+
+mad_risk = 349.26
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 354.6501708
+113 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0335476, relmipgap = 9.45934e-05
+MIN_AVERAGE_INCOME = 7600
+
+average_income = 7600.61
+
+mad_risk = 354.65
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 360.1516349
+114 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0350184, relmipgap = 9.72323e-05
+MIN_AVERAGE_INCOME = 7700
+
+average_income = 7700.2
+
+mad_risk = 360.152
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 365.9499627
+4894 MIP simplex iterations
+4072 branch-and-bound nodes
+absmipgap = 0.035767, relmipgap = 9.77374e-05
+MIN_AVERAGE_INCOME = 7800
+
+average_income = 7800.15
+
+mad_risk = 365.95
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 372.1496826
+1767767 MIP simplex iterations
+1698020 branch-and-bound nodes
+absmipgap = 0.0393455, relmipgap = 0.000105725
+MIN_AVERAGE_INCOME = 7900
+
+average_income = 7900.53
+
+mad_risk = 372.15
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 378.4967261
+5428119 MIP simplex iterations
+3611138 branch-and-bound nodes
+absmipgap = 0.0995033, relmipgap = 0.000262891
+MIN_AVERAGE_INCOME = 8000
+
+average_income = 8000.42
+
+mad_risk = 378.497
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 384.9909133
+114 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0269783, relmipgap = 7.00753e-05
+MIN_AVERAGE_INCOME = 8100
+
+average_income = 8100.29
+
+mad_risk = 384.991
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 391.5621647
+117 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0157073, relmipgap = 4.01145e-05
+MIN_AVERAGE_INCOME = 8200
+
+average_income = 8200.18
+
+mad_risk = 391.562
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 398.1711126
+113 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0377793, relmipgap = 9.48821e-05
+MIN_AVERAGE_INCOME = 8300
+
+average_income = 8300.07
+
+mad_risk = 398.171
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 404.9044799
+6203416 MIP simplex iterations
+5432419 branch-and-bound nodes
+absmipgap = 0.0486272, relmipgap = 0.000120095
+MIN_AVERAGE_INCOME = 8400
+
+average_income = 8400.03
+
+mad_risk = 404.904
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 411.6346974
+3619852 MIP simplex iterations
+3005851 branch-and-bound nodes
+absmipgap = 0.0624522, relmipgap = 0.000151718
+MIN_AVERAGE_INCOME = 8500
+
+average_income = 8500.78
+
+mad_risk = 411.635
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 418.6595134
+6370447 MIP simplex iterations
+3673718 branch-and-bound nodes
+absmipgap = 0.164303, relmipgap = 0.000392449
+MIN_AVERAGE_INCOME = 8600
+
+average_income = 8600.38
+
+mad_risk = 418.66
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 425.9128892
+6155 MIP simplex iterations
+4877 branch-and-bound nodes
+absmipgap = 0.0425133, relmipgap = 9.98169e-05
+MIN_AVERAGE_INCOME = 8700
+
+average_income = 8700.32
+
+mad_risk = 425.913
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 433.4516026
+4083254 MIP simplex iterations
+3164226 branch-and-bound nodes
+absmipgap = 0.127127, relmipgap = 0.000293291
+MIN_AVERAGE_INCOME = 8800
+
+average_income = 8800.33
+
+mad_risk = 433.452
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 440.865517
+4392965 MIP simplex iterations
+3197174 branch-and-bound nodes
+absmipgap = 0.0784399, relmipgap = 0.000177923
+MIN_AVERAGE_INCOME = 8900
+
+average_income = 8900.22
+
+mad_risk = 440.866
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 448.3080123
+118 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0406342, relmipgap = 9.0639e-05
+MIN_AVERAGE_INCOME = 9000
+
+average_income = 9000.24
+
+mad_risk = 448.308
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 455.9018959
+3946099 MIP simplex iterations
+3067792 branch-and-bound nodes
+absmipgap = 0.121239, relmipgap = 0.000265932
+MIN_AVERAGE_INCOME = 9100
+
+average_income = 9100.25
+
+mad_risk = 455.902
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 463.3761253
+3701672 MIP simplex iterations
+3432855 branch-and-bound nodes
+absmipgap = 0.096507, relmipgap = 0.000208269
+MIN_AVERAGE_INCOME = 9200
+
+average_income = 9200.14
+
+mad_risk = 463.376
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 470.8052559
+121 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0243569, relmipgap = 5.17345e-05
+MIN_AVERAGE_INCOME = 9300
+
+average_income = 9300.16
+
+mad_risk = 470.805
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 478.4208417
+4083509 MIP simplex iterations
+3121405 branch-and-bound nodes
+absmipgap = 0.131368, relmipgap = 0.000274587
+MIN_AVERAGE_INCOME = 9400
+
+average_income = 9400.12
+
+mad_risk = 478.421
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 485.8972081
+120 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0474431, relmipgap = 9.76403e-05
+MIN_AVERAGE_INCOME = 9500
+
+average_income = 9500.5
+
+mad_risk = 485.897
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 493.5235351
+4769879 MIP simplex iterations
+3482547 branch-and-bound nodes
+absmipgap = 0.0535584, relmipgap = 0.000108522
+MIN_AVERAGE_INCOME = 9600
+
+average_income = 9600.03
+
+mad_risk = 493.524
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 501.2649659
+2939474 MIP simplex iterations
+2484531 branch-and-bound nodes
+absmipgap = 0.117737, relmipgap = 0.00023488
+MIN_AVERAGE_INCOME = 9700
+
+average_income = 9700.7
+
+mad_risk = 501.265
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 509.1869586
+2754535 MIP simplex iterations
+2015805 branch-and-bound nodes
+absmipgap = 0.113484, relmipgap = 0.000222873
+MIN_AVERAGE_INCOME = 9800
+
+average_income = 9800.21
+
+mad_risk = 509.187
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 517.0555277
+121 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0431517, relmipgap = 8.34567e-05
+MIN_AVERAGE_INCOME = 9900
+
+average_income = 9900.03
+
+mad_risk = 517.056
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 525.3726583
+127 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0332964, relmipgap = 6.33768e-05
+MIN_AVERAGE_INCOME = 10000
+
+average_income = 10000.3
+
+mad_risk = 525.373
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 533.9486547
+116 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0475126, relmipgap = 8.89834e-05
+MIN_AVERAGE_INCOME = 10100
+
+average_income = 10100.6
+
+mad_risk = 533.949
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 542.9189139
+2582521 MIP simplex iterations
+2319954 branch-and-bound nodes
+absmipgap = 0.0522789, relmipgap = 9.62922e-05
+MIN_AVERAGE_INCOME = 10200
+
+average_income = 10200.8
+
+mad_risk = 542.919
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 552.066826
+3684948 MIP simplex iterations
+3222512 branch-and-bound nodes
+absmipgap = 0.0941743, relmipgap = 0.000170585
+MIN_AVERAGE_INCOME = 10300
+
+average_income = 10301
+
+mad_risk = 552.067
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 561.1273369
+1138652 MIP simplex iterations
+1132548 branch-and-bound nodes
+absmipgap = 0.0509195, relmipgap = 9.0745e-05
+MIN_AVERAGE_INCOME = 10400
+
+average_income = 10400.1
+
+mad_risk = 561.127
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: time limit with integer solution; objective 570.2752489
+2024761 MIP simplex iterations
+1852019 branch-and-bound nodes
+absmipgap = 0.0972766, relmipgap = 0.000170578
+MIN_AVERAGE_INCOME = 10500
+
+average_income = 10500.3
+
+mad_risk = 570.275
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 579.3043806
+112 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0219268, relmipgap = 3.78501e-05
+MIN_AVERAGE_INCOME = 10600
+
+average_income = 10600.1
+
+mad_risk = 579.304
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 588.8570596
+112 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.0413572, relmipgap = 7.02331e-05
+MIN_AVERAGE_INCOME = 10700
+
+average_income = 10700.4
+
+mad_risk = 588.857
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 598.4603542
+910378 MIP simplex iterations
+859478 branch-and-bound nodes
+absmipgap = 0.0571183, relmipgap = 9.54421e-05
+MIN_AVERAGE_INCOME = 10800
+
+average_income = 10800.6
+
+mad_risk = 598.46
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 608.032066
+749525 MIP simplex iterations
+632585 branch-and-bound nodes
+absmipgap = 0.0519003, relmipgap = 8.53578e-05
+MIN_AVERAGE_INCOME = 10900
+
+average_income = 10900.4
+
+mad_risk = 608.032
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 617.5552441
+428077 MIP simplex iterations
+356963 branch-and-bound nodes
+absmipgap = 0.0380265, relmipgap = 6.15759e-05
+MIN_AVERAGE_INCOME = 11000
+
+average_income = 11000.7
+
+mad_risk = 617.555
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 627.0784221
+199698 MIP simplex iterations
+151572 branch-and-bound nodes
+absmipgap = 0.0604032, relmipgap = 9.63248e-05
+MIN_AVERAGE_INCOME = 11100
+
+average_income = 11100.9
+
+mad_risk = 627.078
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 636.6183352
+87634 MIP simplex iterations
+65229 branch-and-bound nodes
+absmipgap = 0.0558006, relmipgap = 8.76516e-05
+MIN_AVERAGE_INCOME = 11200
+
+average_income = 11201.2
+
+mad_risk = 636.618
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 646.2932167
+55566 MIP simplex iterations
+47506 branch-and-bound nodes
+absmipgap = 0.0567101, relmipgap = 8.77468e-05
+MIN_AVERAGE_INCOME = 11300
+
+average_income = 11301
+
+mad_risk = 646.293
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 655.8473694
+90 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.00370786, relmipgap = 5.65354e-06
+MIN_AVERAGE_INCOME = 11400
+
+average_income = 11400
+
+mad_risk = 655.847
+
+Updating the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: optimal integer solution within mipgap or absmipgap; objective 665.6256195
+94 MIP simplex iterations
+0 branch-and-bound nodes
+absmipgap = 0.00414181, relmipgap = 6.22244e-06
+MIN_AVERAGE_INCOME = 11500
+
+average_income = 11500.3
+
+mad_risk = 665.626
+
+Removing the jobfile
+Retrieved stub
+CPLEX 22.1.1.0: integer infeasible.
+102 MIP simplex iterations
+0 branch-and-bound nodes
+No basis.
+MIN_AVERAGE_INCOME = 11553
+
+average_income = 11500.3
+
+mad_risk = 665.626
