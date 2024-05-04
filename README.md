@@ -380,3 +380,4 @@ Rozwiązania te zostały osiągnięte poprzez ustalenie funkcji celu odpowiednio
 
 > Wybrać trzy dowolne rozwiązania efektywne. Sprawdzić czy zachodzi pomiędzy nimi relacja dominacji stochastycznej pierwszego rzędu. Wyniki skomentować, odnieść do ogólnego przypadku.
 
+![Dystrybuanta dla 3 rozwiązań](./img/income-cdf.png)

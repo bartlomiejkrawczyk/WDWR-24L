@@ -36,5 +36,8 @@ for {s in SOLUTIONS} {
     display MIN_AVERAGE_INCOME;
     display average_income;
     display mad_risk;
-    display scenario_income;
+    for {i in SCENARIOS} {
+    	printf "%f, ", scenario_income[i];
+    }
+    printf "\n";
 }
