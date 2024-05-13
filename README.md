@@ -415,26 +415,34 @@ marzec    | 50 | 50 | 50 | 50
 <!-- Specyfikacja problemu decyzyjnego z dookreśleniem wszystkich elementów. -->
 <!-- Określenie zmiennych decyzyjnych, ograniczeń i funkcji oceny. -->
 
+Model dwukryterialny w większości bazuje na zbiorach, parametrach, zmiennych decyzyjnych i ograniczeniach zdefiniowanych dla modelu jednokryterialnego.
+
+Konwencja zapisu matematycznego modelu jest tożsama z konwencją wykorzystaną przy modelu w zadaniu 1.
+
 ### Zbiory
 
-- $SCENARIOS = \{1, 2, ..., 100\}$ - zbiór liczb reprezentujących numer scenariusza,
-- $DEVIATION_MULTIPLIERS = \{1, -1\}$ - pomocniczy zbiór pozwalający na uproszczenia zapisu realizacji odchyłek.
+W modelu dwukryterialnym dochodzą dwa zbiory:
+
+- $SCENARIOS = \{1, 2, ..., 100\}$ - zbiór liczb reprezentujących kolejne scenariusze,
+- $DEVIATION\_MULTIPLIERS = \{1, -1\}$ - pomocniczy zbiór pozwalający na uproszczenie zapisu realizacji odchyłek.
 
 ### Parametry
 
 - $SCENARIOS\_NO = 100$ - liczba wszystkich testowanych scenariuszy,
 
-Pozbywamy się wcześniej ustalonych parametrów $EXPECTED\_INCOME\_PER\_PRODUCT$ oraz wszystkich ograniczeń, w których te parametry były wykorzystane. Tym razem definiujemy zysk oddzielnie dla każdego scenariusza:
+Pozbywamy się wcześniej ustalonych parametrów $EXPECTED\_INCOME\_PER\_PRODUCT$ oraz wszystkich ograniczeń, w których te parametry były wykorzystane. Tym razem definiujemy zysk oddzielnie dla poszczególnych realizacji scenariuszy:
 
-- $SCENARIOS\_INCOME\_PER\_PRODUCT[s][p]\ dla\ s \in SCENARIOS,\ p \in PRODUCTS$ - wygenerowane z obciętego rozkładu t-studenta wartości zarobków dla poszczególnych produktów.
+- $SCENARIOS\_INCOME\_PER\_PRODUCT[s][p]\ dla\ s \in SCENARIOS,\ p \in PRODUCTS$ - dochód ze sprzedaży produktu $p$ przy realizacji scenariusza $s$. Wartości tego parametru zostały wygenerowane z obciętego rozkładu t-studenta.
 
 ### Zmienne decyzyjne
 
-Zmienna $income$ została zastąpiona przez zysk wyliczany dla poszczególnych scenariuszy:
+Zmienna decyzyjna $income$ została zastąpiona przez zysk wyliczany dla poszczególnych scenariuszy:
 
-- $scenario\_income[s],\ s \in\ SCENARIOS$ - całkowity zysk osiągnięty w przypadku danego scenariusza $s$,
-- $deviation[s][d],\ s \in\ SCENARIOS,\ d \in\ DEVIATION_MULTIPLIERS$ - macierz dodatnich i ujemnych odchyłek zarobków z poszczególnych scenariuszy od średniej zarobków na bazie wszystkich scenariuszy. Wartości tych odchyłek są potrzebne przy wyliczaniu wartości bezwzględnej różnicy zysków ze scenariuszy i średnich zysków,
-- $mad_risk$ - (MAD - ang. Mean Absolute Deviation) miara ryzyka wyliczona na bazie przeciętnego odchylenia zysku ze scenariuszy i średniego zysku.
+- $scenario\_income[s],\ s \in\ SCENARIOS$ - całkowity zysk osiągalny w przypadku danego scenariusza $s$,
+- $deviation[s][d],\ s \in\ SCENARIOS,\ d \in\ DEVIATION\_MULTIPLIERS$ - macierz dodatnich i ujemnych odchyłek dochodów z poszczególnych scenariuszy $s$ od średniej dochodów na bazie wszystkich scenariuszy. Wartości tych odchyłek są potrzebne przy wyliczaniu wartości bezwzględnej różnicy zysków ze scenariuszy i średnich zysków,
+- $mad\_risk$ - (MAD - ang. Mean Absolute Deviation) miara ryzyka wyliczona na bazie przeciętnego odchylenia zysku ze scenariuszy i średniego zysku. Dzięki wprowadzeniu ryzyka jako zmiennej decyzyjnej upraszcza się zapis funkcji oceny. 
+
+<!-- TODO: from here -->
 
 ### Ograniczenia
 
@@ -445,7 +453,7 @@ scenario\_income[s] =
 \sum_{p \in PRODUCTS, m \in MONTHS} sale[p][m] * SCENARIOS\_INCOME\_PER\_PRODUCT[s][p] - left\_over[p][m] * MONTHLY\_PRODUCT\_STORAGE\_COST
 $$
 
-- Średni zysk jest wyliczany jako średnia zarobków ze wszystkich scenariuszy:
+- Średni zysk jest wyliczany jako średnia dochodów ze wszystkich scenariuszy:
 
 $$
 average\_income = 1 / SCENARIOS\_NO * \sum_{s \in SCENARIOS} scenario\_income[s]
@@ -462,6 +470,11 @@ $$
 $$
 mad\_risk = 1 / SCENARIO\_NO * \sum_{s \in SCENARIOS, d \in DEVIATION\_MULTIPLIERS} deviation[s, d]
 $$
+
+<!-- 
+TODO:
+$\delta(x) = \Sigma_{t=1}^{T}|\mu(x)-r_t(x)|p_t$, gdzie $\mu(x)$ oznacza wartość średnią, $r_t(x)$ realizację dla scenariusza $t$, $p_t$ prawdopodobieństwo scenariusza $t$
+ -->
 
 ### Funkcje oceny
 
