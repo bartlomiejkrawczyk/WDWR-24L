@@ -61,4 +61,4 @@ if __name__ == '__main__':
             α=BOUNDS[LOWER],
             β=BOUNDS[UPPER]
         )
-        print(f"E(R_{i}) = {expected}")
+        print(f"E(R_{i+1}) = {expected}")
