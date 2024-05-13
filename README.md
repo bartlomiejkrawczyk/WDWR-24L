@@ -240,12 +240,12 @@ toczenie                 | -    | 0.05 | 0.02 | -
 
 - $EXPECTED\_INCOME\_PER\_PRODUCT[p]\ dla \ p \in PRODUCTS$ - średni dochód ze sprzedaży produktów (w zł/sztukę):
 
-$p \in PROCESSES$ | $EXPECTED\_INCOME\_PER\_PRODUCT$
-------------------|---------------------------------
-P1                | $E(R_1)$
-P2                | $E(R_2)$
-P3                | $E(R_3)$
-P4                | $E(R_4)$
+$p \in PRODUCTS$ | $EXPECTED\_INCOME\_PER\_PRODUCT[p]$
+-----------------|------------------------------------
+P1               | $E(R_1)$
+P2               | $E(R_2)$
+P3               | $E(R_3)$
+P4               | $E(R_4)$
 
 - $SELL\_LIMIT[m][p]\ dla\ p \in PRODUCTS,\ m \in MONTHS$ - ograniczenia rynkowe na liczbę sprzedawanych produktów w danym miesiącu:
 
@@ -334,6 +334,21 @@ $$
 \forall{p \in PRODUCTS,\ m \in MONTHS}:\ left\_over[p][m] >= 0
 $$
 
+- Produkty są niepodzielne - produkcja, sprzedaż i pozostałości muszą być całkowitoliczbowe:
+$$
+\forall{p \in PRODUCTS,\ m \in MONTHS}:\ production[p][m] \in \mathbb{N}
+$$
+
+$$
+\forall{p \in PRODUCTS,\ m \in MONTHS}:\ sale[p][m] \in \mathbb{N}
+$$
+
+$$
+\forall{p \in PRODUCTS,\ m \in MONTHS}:\ left\_over[p][m] \in \mathbb{N}
+$$
+
+gdzie, $\mathbb{N}$ - zbiór liczb naturalnych.
+
 ### Funkcja oceny
 
 Firma chce osiągnąć największy oczekiwany zysk. Maksymalizujemy oczekiwany dochód z produkcji, zatem funkcją oceny jest: 
@@ -389,12 +404,23 @@ marzec    | 50 | 50 | 50 | 50
 
 # Dwukryterialny model zysku i ryzyka z wartością średnią jako miarą zysku i odchyleniem przeciętnym jako miarą ryzyka
 
-## Zbiory
+## Analityczne sformułowanie modelu
+
+<!-- TODO -->
+<!-- Wskazanie i uzasadnienie przyjętych założeń. -->
+<!-- Wskazanie podstaw teoretycznych. -->
+
+## Specyfikacja problemu decyzyjnego
+
+<!-- Specyfikacja problemu decyzyjnego z dookreśleniem wszystkich elementów. -->
+<!-- Określenie zmiennych decyzyjnych, ograniczeń i funkcji oceny. -->
+
+### Zbiory
 
 - $SCENARIOS = \{1, 2, ..., 100\}$ - zbiór liczb reprezentujących numer scenariusza,
 - $DEVIATION_MULTIPLIERS = \{1, -1\}$ - pomocniczy zbiór pozwalający na uproszczenia zapisu realizacji odchyłek.
 
-## Parametry
+### Parametry
 
 - $SCENARIOS\_NO = 100$ - liczba wszystkich testowanych scenariuszy,
 
@@ -402,7 +428,7 @@ Pozbywamy się wcześniej ustalonych parametrów $EXPECTED\_INCOME\_PER\_PRODUCT
 
 - $SCENARIOS\_INCOME\_PER\_PRODUCT[s][p]\ dla\ s \in SCENARIOS,\ p \in PRODUCTS$ - wygenerowane z obciętego rozkładu t-studenta wartości zarobków dla poszczególnych produktów.
 
-## Zmienne decyzyjne
+### Zmienne decyzyjne
 
 Zmienna $income$ została zastąpiona przez zysk wyliczany dla poszczególnych scenariuszy:
 
@@ -410,7 +436,7 @@ Zmienna $income$ została zastąpiona przez zysk wyliczany dla poszczególnych s
 - $deviation[s][d],\ s \in\ SCENARIOS,\ d \in\ DEVIATION_MULTIPLIERS$ - macierz dodatnich i ujemnych odchyłek zarobków z poszczególnych scenariuszy od średniej zarobków na bazie wszystkich scenariuszy. Wartości tych odchyłek są potrzebne przy wyliczaniu wartości bezwzględnej różnicy zysków ze scenariuszy i średnich zysków,
 - $mad_risk$ - (MAD - ang. Mean Absolute Deviation) miara ryzyka wyliczona na bazie przeciętnego odchylenia zysku ze scenariuszy i średniego zysku.
 
-## Ograniczenia
+### Ograniczenia
 
 - Dochodem dla danego scenariusza jest różnica dochodu ze sprzedaży oraz kosztu magazynowania:
 
@@ -437,7 +463,24 @@ $$
 mad\_risk = 1 / SCENARIO\_NO * \sum_{s \in SCENARIOS, d \in DEVIATION\_MULTIPLIERS} deviation[s, d]
 $$
 
-## Funkcje oceny
+### Funkcje oceny
+
+<!-- TODO: opisanie w zależności od pod punktu -->
+
+## Sformułowanie modelu
+
+<!-- TODO: Sformułowanie modelu w postaci do rozwiązania z wykorzystaniem wybranego narzędzie/środowiska implementacji (kompletny kod źródłowy). -->
+<!-- Polecane narzędzia: -->
+<!-- - optymalizacja: AMPL, CPLEX (biblioteki) -->
+<!-- - statystyka: R, MATLAB -->
+
+## Testy poprawności implementacji
+
+<!-- TODO: Omówienie testów poprawności implementacji -->
+
+## Wyniki
+
+<!-- TODO: Omówienie wyników z nawiązaniem do teorii. -->
 
 > Wyznaczyć obraz zbioru rozwiązań efektywnych w przestrzeni ryzyko–zysk.
 
@@ -461,6 +504,8 @@ Na wykresie zostały przedstawione 119 rozwiązania efektywne zadania:
 
 ![Obraz zbioru rozwiązań efektywnych w przestrzeni ryzyko–zysk](./img/risk-income.png)
 
+---
+
 > Wskazać rozwiązania efektywne minimalnego ryzyka i maksymalnego zysku. Jakie odpowiadają im wartości w przestrzeni ryzyko–zysk?
 
 typ \ wartość    | zysk  | ryzyko
@@ -469,6 +514,8 @@ minimalne ryzyko | -200  | 0
 maksymalny zysk  | 11553 | 735.498
 
 Rozwiązania te zostały osiągnięte poprzez ustalenie funkcji celu odpowiednio na minimalizację ryzyka w pierwszym przypadku i maksymalizację zysku w drugim przypadku. Następnie, aby zapobiec wyborze nie efektywnego rozwiązania ustalono poziom ryzyka (w pierwszym przypadku) i zysku (w drugim przypadku) na stały poziom ustalony w poprzednim kroku i uruchomiono ponownie optymalizację. Tym razem w pierwszym przypadku maksymalizując zysk przy stałym ryzyku i w drugim przypadku minimalizując ryzyko przy stałym zysku.
+
+---
 
 > Wybrać trzy dowolne rozwiązania efektywne. Sprawdzić czy zachodzi pomiędzy nimi relacja dominacji stochastycznej pierwszego rzędu. Wyniki skomentować, odnieść do ogólnego przypadku.
 
