@@ -26,7 +26,7 @@ minimize min_mad_risk:
 #############################################################################
 
 set SOLUTIONS;
-param MIN_INCOME_TARGETS{s in SOLUTIONS};;
+param MIN_INCOME_TARGETS{s in SOLUTIONS};
 	
 data 2c-parameters.dat;
 
