@@ -537,7 +537,30 @@ $$
 
 ### Funkcje oceny
 
-<!-- TODO: opisanie w zależności od pod punktu -->
+Funkcje oceny podobnie jak powyższe ograniczenia zależą od rozwiązywanego podpunktu.
+
+W podpunktach $a)$ i $c)$ stosujemy minimalizację ryzyka (przy zadanym poziomie zysku):
+$$
+min(mad\_risk)
+$$
+
+W podpunkcie $b)$ w celu wyznaczenia efektywnego rozwiązania maksymalnego zysku stosujemy najpierw maksymalizację zysku:
+$$
+max(average\_income)
+$$
+a następnie poszukujemy rozwiązania minimalnego ryzyka (przy zadanym maksymalnym poziomie zysku):
+$$
+min(mad\_risk)
+$$
+
+W podpunkcie $b)$ w celu wyznaczenia efektywnego rozwiązania minimalnego ryzyka stosujemy najpierw minimalizację ryzyka:
+$$
+min(mad\_risk)
+$$
+a następnie poszukujemy rozwiązania maksymalnego zysku (przy zadanym minimalnym poziomie ryzyka):
+$$
+max(average\_income)
+$$
 
 ## Sformułowanie modelu
 
@@ -551,8 +574,6 @@ $$
 <!-- TODO: Omówienie testów poprawności implementacji -->
 
 ## Wyniki
-
-<!-- TODO: Omówienie wyników z nawiązaniem do teorii. -->
 
 > Wyznaczyć obraz zbioru rozwiązań efektywnych w przestrzeni ryzyko–zysk.
 
@@ -569,7 +590,7 @@ Iteracja po równo odległych osiągalnych poziomach zysku z zakresu [-200; 1155
 Dla tak zdefiniowanych poszczególnych zadań została ustalona funkcja oceny na minimalizację miary ryzyka:
 
 $$
-min mad_risk
+min(mad\_risk)
 $$
 
 Na wykresie zostały przedstawione 119 rozwiązania efektywne zadania:
@@ -580,7 +601,7 @@ Na wykresie zostały przedstawione 119 rozwiązania efektywne zadania:
 
 > Wskazać rozwiązania efektywne minimalnego ryzyka i maksymalnego zysku. Jakie odpowiadają im wartości w przestrzeni ryzyko–zysk?
 
-typ \ wartość    | zysk  | ryzyko
+typ \\ wartość   | zysk  | ryzyko
 -----------------|-------|--------
 minimalne ryzyko | -200  | 0
 maksymalny zysk  | 11553 | 735.498
@@ -591,6 +612,18 @@ Rozwiązania te zostały osiągnięte poprzez ustalenie funkcji celu odpowiednio
 
 > Wybrać trzy dowolne rozwiązania efektywne. Sprawdzić czy zachodzi pomiędzy nimi relacja dominacji stochastycznej pierwszego rzędu. Wyniki skomentować, odnieść do ogólnego przypadku.
 
-![Dystrybuanta dla 3 rozwiązań](./img/income-cdf.png)
+Zostały wybrane trzy zadane poziomy zysku, dla których następnie były wyliczone rozwiązania efektywne. Wyliczono wartości oczekiwanego zysku oraz miary ryzyka, a rozkład zysku w zależności od scenariusza został przedstawiony na Rysunku 2.
 
-<!-- TODO: komentarz + odniesienie do ogólnego przypadku -->
+nazwa | zadany poziom zysku (w zł) | oczekiwany zysk (w zł) | wyliczona miara ryzyka (w zł)
+------|----------------------------|------------------------|------------------------------
+S1    | 5000                       | 5000.13                | 233.011
+S2    | 11450                      | 11452.1                | 660.965
+S3    | 11550                      | 11550                  | 728.842
+
+![Dystrybuanta dla trzech rozwiązań efektywnych](./img/income-cdf.png)
+
+Rozwiązanie $S1$ jest zdominowane przez rozwiązania $S2$ i $S3$ w sensie FSD.
+
+W przypadku rozwiązań $S2$ i $S3$ dystrybuanty się przecinają, oznacza to że nie występuje między nimi dominacja w sensie FSD.
+
+W ogólnym przypadku dla dwóch rozwiązań efektywnych o dużej różnicy w oczekiwanym zysku rozwiązanie o wyższej średniej zysku dominuje w sensie FSD rozwiązanie o niższym oczekiwanym zysku. Dla rozwiązań efektywnych nieznacznie różniących się oczekiwanymi zyskami dominacja może zajść, ale nie musi.
