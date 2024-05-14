@@ -70,7 +70,7 @@ Przedsiębiorstwo pracuje 6 dni w tygodniu w systemie dwóch zmian. Każda zmian
 
 1. Zaproponować jednokryterialny model wyboru w warunkach ryzyka z wartością średnią jako miarą zysku. Wyznaczyć rozwiązanie optymalne.
 
-2. Jako rozszerzenie powyższego zaproponować dwukryterialny model zysku i ryzyka z wartością średnią jako miarą zysku i odchyleniem przeciętnym jako miarą ryzyka. Dla decyzji $x \in Q$ odchylenie przeciętne jest definiowane jako $\delta(x) = \Sigma_{t=1}^{T}|\mu(x)-r_t(x)|p_t$, gdzie $\mu(x)$ oznacza wartość średnią, $r_t(x)$ realizację dla scenariusza $t$, $p_t$ prawdopodobieństwo scenariusza $t$.
+2. Jako rozszerzenie powyższego zaproponować dwukryterialny model zysku i ryzyka z wartością średnią jako miarą zysku i odchyleniem przeciętnym jako miarą ryzyka. Dla decyzji $x \in Q$ odchylenie przeciętne jest definiowane jako $\delta(x) = \sum_{t=1}^{T}|\mu(x)-r_t(x)|p_t$, gdzie $\mu(x)$ oznacza wartość średnią, $r_t(x)$ realizację dla scenariusza $t$, $p_t$ prawdopodobieństwo scenariusza $t$.
     - Wyznaczyć obraz zbioru rozwiązań efektywnych w przestrzeni ryzyko–zysk.
     - Wskazać rozwiązania efektywne minimalnego ryzyka i maksymalnego zysku. Jakie odpowiadają im wartości w przestrzeni ryzyko–zysk?
     - Wybrać trzy dowolne rozwiązania efektywne. Sprawdzić czy zachodzi pomiędzy nimi relacja dominacji stochastycznej pierwszego rzędu. Wyniki skomentować, odnieść do ogólnego przypadku.
@@ -269,7 +269,7 @@ $$
 \forall{m \in MONTHS,\ i \in PROCESSES}: 
 $$
 $$
-\Sigma_{p \in PRODUCTS}\ (production[p][m] * PRODUCTION\_TIME[i][p]) \le 
+\sum_{p \in PRODUCTS}\ (production[p][m] * PRODUCTION\_TIME[i][p]) \le 
 $$
 $$
 WORKING\_HOURS\_IN\_A\_MONTH * PROCESS\_TOOLS[i]
@@ -290,7 +290,7 @@ $$
 
 - Oczekiwanym dochodem całkowitym jest suma wartości oczekiwanych ze sprzedaży poszczególnych produktów w różnych miesiącach pomniejszonym o sumaryczne koszty magazynowania produktów w tym czasie:
 $$
-income =\Sigma_{p \in PRODUCTS,\ m \in MONTHS}
+income =\sum_{p \in PRODUCTS,\ m \in MONTHS}
 $$
 $$
 (sale[p][m] * EXPECTED\_INCOME\_PER\_PRODUCT[p] - 
@@ -410,6 +410,47 @@ marzec    | 50 | 50 | 50 | 50
 <!-- Wskazanie i uzasadnienie przyjętych założeń. -->
 <!-- Wskazanie podstaw teoretycznych. -->
 
+<!-- wartością średnią jako miarą zysku i odchyleniem przeciętnym jako miarą ryzyka -->
+
+Model dwukryterialny został utworzony na bazie modelu jednokryterialnego. Przy rozwiązywaniu kolejnych podpunktów zostały zastosowane dwa sposoby optymalizacji rozwiązania:
+
+- maksymalizacja średniego zysku przy ustalonym maksymalnym poziomie ryzyka,
+- minimalizacja ryzyka przy ustalonym minimalnym poziomie oczekiwanego zysku.
+
+Zastosowane metody dla poszczególnych podpunktów są lepiej opisane w sekcji $Wyniki$.
+
+Model dwukryterialny bazuje na dwóch kryteriach:
+
+- oczekiwanej wartości dochodu - miara zysku,
+- odchyleniu przeciętnym wartości oczekiwanej dla poszczególnych realizacji scenariuszy od wartości średniej - miara ryzyka.
+
+Miarę ryzyka możemy wyliczyć ze wzoru:
+$$
+\delta(x) = \sum_{t=1}^{T}|\mu(x)-r_t(x)|p_t
+$$
+
+gdzie:
+
+- $\mu(x)$ - wartość średnia,
+- $r_t(x)$ - realizacja scenariusza $t$,
+- $p_t$ - prawdopodobieństwo scenariusza $t$.
+
+W celu zamodelowania rozwiązania zostało wygenerowane 100 jednakowo prawdopodobnych scenariuszy z zadanego rozkładu zmiennej losowej $R$. Generacja jednakowo prawdopodobnych scenariuszy pozwala na zastosowanie zwykłej średniej zamiast średniej ważonej z ustalonymi prawdopodobieństwami każdego scenariusza.
+
+Dodatkowo możemy zamodelować wartość bezwzględną jako sumę dodatniej i ujemnej odchyłki:
+$$
+|x| = x^+ + x^-
+$$
+
+gdzie:
+
+- $x = x^+ - x^-$ - różnica odchyłek jest równa wartości tej liczby,
+- $x^+ \ge 0$ - odchyłka dodatnia jest nieujemna,
+- $x^- \ge 0$ - odchyłka ujemna jest nieujemna,
+- jeśli odchyłka $x^+$ jest różna 0 to odchyłka $x^-$ jest równa 0 i na odwrót, jeśli odchyłka $x^-$ jest różna 0 to odchyłka $x^+$ jest równa 0 - możemy to zapewnić dodając pewną wagę dla poszczególnych odchyłek przy minimalizacji w funkcji oceny.
+
+Zastosowanie obu tych sposobów pozwoli na uproszczenie wyliczania odchylenia przeciętnego.
+
 ## Specyfikacja problemu decyzyjnego
 
 <!-- Specyfikacja problemu decyzyjnego z dookreśleniem wszystkich elementów. -->
@@ -439,42 +480,60 @@ Pozbywamy się wcześniej ustalonych parametrów $EXPECTED\_INCOME\_PER\_PRODUCT
 Zmienna decyzyjna $income$ została zastąpiona przez zysk wyliczany dla poszczególnych scenariuszy:
 
 - $scenario\_income[s],\ s \in\ SCENARIOS$ - całkowity zysk osiągalny w przypadku danego scenariusza $s$,
-- $deviation[s][d],\ s \in\ SCENARIOS,\ d \in\ DEVIATION\_MULTIPLIERS$ - macierz dodatnich i ujemnych odchyłek dochodów z poszczególnych scenariuszy $s$ od średniej dochodów na bazie wszystkich scenariuszy. Wartości tych odchyłek są potrzebne przy wyliczaniu wartości bezwzględnej różnicy zysków ze scenariuszy i średnich zysków,
+- $deviation[s][d],\ s \in\ SCENARIOS,\ d \in\ DEVIATION\_MULTIPLIERS$ - macierz dodatnich i ujemnych odchyłek dochodów z poszczególnych scenariuszy $s$ od średniej dochodów na bazie wszystkich scenariuszy. Wartości tych odchyłek są potrzebne przy wyliczaniu wartości bezwzględnej różnicy zysków przy realizacji scenariuszy i średnich zysków,
 - $mad\_risk$ - (MAD - ang. Mean Absolute Deviation) miara ryzyka wyliczona na bazie przeciętnego odchylenia zysku ze scenariuszy i średniego zysku. Dzięki wprowadzeniu ryzyka jako zmiennej decyzyjnej upraszcza się zapis funkcji oceny. 
-
-<!-- TODO: from here -->
 
 ### Ograniczenia
 
-- Dochodem dla danego scenariusza jest różnica dochodu ze sprzedaży oraz kosztu magazynowania:
-
+- Dochodem dla danego scenariusza jest różnica dochodu ze sprzedaży oraz kosztu magazynowania produktów w tym czasie:
 $$
-scenario\_income[s] = 
-\sum_{p \in PRODUCTS, m \in MONTHS} sale[p][m] * SCENARIOS\_INCOME\_PER\_PRODUCT[s][p] - left\_over[p][m] * MONTHLY\_PRODUCT\_STORAGE\_COST
+\forall{s \in SCENARIOS}: scenario\_income[s] =
+$$
+$$
+\sum_{p \in PRODUCTS, m \in MONTHS} (sale[p][m] * SCENARIOS\_INCOME\_PER\_PRODUCT[s][p] - 
+$$
+$$
+left\_over[p][m] * MONTHLY\_PRODUCT\_STORAGE\_COST)
 $$
 
-- Średni zysk jest wyliczany jako średnia dochodów ze wszystkich scenariuszy:
-
+- W przypadku tego zadania oczekiwany zysk jest wyliczany jako średnia dochodów ze wszystkich scenariuszy. Scenariusze są jednakowo prawdopodobne, więc możemy zastosować zwykłą średnią:
 $$
 average\_income = 1 / SCENARIOS\_NO * \sum_{s \in SCENARIOS} scenario\_income[s]
 $$
 
-- Wyliczenie pomocniczych odchyłek:
-
+- Wyliczenie odchyłek zysków przy realizacji scenariusza od wartości średniej. Pozwoli to zamodelować wartość bezwzględną modelem liniowym. Korzystamy tutaj ze zdefiniowanego zbioru $DEVIATION\_MULTIPLIERS$, w którym zdefiniowane są odpowiednie mnożniki dla odchyłek:
 $$
-\forall{s \in SCENARIOS}: \sum{d \in DEVIATION\_MULTIPLIERS} deviation[s][d] * d = average\_income - scenario\_income[s]
+\forall{s \in SCENARIOS}: 
+$$
+$$
+\sum{d \in DEVIATION\_MULTIPLIERS}\ deviation[s][d] * d = average\_income - scenario\_income[s]
 $$
 
-- Ustalenie przeciętnego odchylenia, jako średniej wartości bezwzględnej odchyleń zysków ze scenariuszy i średniego zysku:
-
+- Ustalenie przeciętnego odchylenia, jako średniej wartości bezwzględnej odchyleń zysków ze scenariuszy i średniego zysku. Wartość bezwzględną odchyleń jesteśmy wstanie wyliczyć sumując dodatnie i ujemne odchyłki dla poszczególnych scenariuszy. Całkowitą miarę ryzyka wyliczamy jako średnia tych wartości bezwzględnych odchylenia. Wszystkie scenariusze są jednakowo prawdopodobne, więc wzór zostaje uproszczony do:
 $$
 mad\_risk = 1 / SCENARIO\_NO * \sum_{s \in SCENARIOS, d \in DEVIATION\_MULTIPLIERS} deviation[s, d]
 $$
 
-<!-- 
-TODO:
-$\delta(x) = \Sigma_{t=1}^{T}|\mu(x)-r_t(x)|p_t$, gdzie $\mu(x)$ oznacza wartość średnią, $r_t(x)$ realizację dla scenariusza $t$, $p_t$ prawdopodobieństwo scenariusza $t$
- -->
+- Zgodnie z ustaleniami w $Analitycznym\ sformułowaniu\ modelu$ wymagamy, aby poszczególne odchyłki były nieujemne:
+$$
+\forall{s \in SCENARIOS, d \in DEVIATION\_MULTIPLIERS}: deviation[s][d] \ge 0
+$$
+
+Dodatkowo w zależności od podpunktu zostały zdefiniowane następujące ograniczenia:
+
+- Został zdefiniowany warunek na zadany poziom minimalnych zysków $MIN\_AVERAGE\_INCOME$. Warunek ten został wykorzystany w ramach podpunktu:
+    - $a)$ w celu wizualizacji rozwiązań efektywnych na wykresie,
+    - $b)$, aby znaleźć rozwiązanie efektywne maksymalnego zysku. Symulujemy optymalizację leksykograficzną poprzez wywołanie dwóch optymalizacji. Najpierw maksymalizujemy zysk, a następnie dodajemy warunek na ustalony poziom maksymalnego zysku i zastępujemy funkcję maksymalizującą zysk przez minimalizację ryzyka,
+    - $c)$ w celu wizualizacji poszczególnych rozwiązań na wykresie.
+$$
+average\_income >= MIN\_AVERAGE\_INCOME
+$$
+
+- Został zdefiniowany warunek na zadany poziom maksymalnego ryzyka $MAX\_MAD\_RISK$. Warunek ten został wykorzystany w ramach podpunktu:
+    - $b)$ w celu znalezienia rozwiązania efektywnego minimalnego ryzyka. Wykonujemy optymalizację leksykograficzną poprzez wywołanie dwóch niezależnych optymalizacji. Najpierw minimalizujemy ryzyko, a następnie dodajemy ten warunek na ustalony poziom minimalnego ryzyka i następnie ustalamy funkcję oceny na maksymalizację zysku.
+$$
+mad\_risk <= MAX\_MAD\_RISK
+$$
 
 ### Funkcje oceny
 
