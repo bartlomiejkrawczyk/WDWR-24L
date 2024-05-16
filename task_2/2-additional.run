@@ -8,6 +8,9 @@ param MIN_AVERAGE_INCOME;
 model task.mod;
 data parameters.dat;
 
+var safety_indicator;
+param lambda = 1;
+
 #############################################################################
 
 # Warunek na minimalny zadany poziom zarobków:
@@ -16,16 +19,22 @@ subject to min_average_income_constraint:
 
 #############################################################################
 
+# Warunek na wspó³czynnik bezpieczeñstwa:
+subject to safety_indicator_constraint:
+	safety_indicator = average_income - lambda * mad_risk / 2;
+
+#############################################################################
+
 # Minimalizujemy ryzyko przy zadanym poziomie zarobków:
-minimize min_mad_risk:
-	mad_risk;
+maximize safety_indicator_maximization:
+	safety_indicator;
 
 #############################################################################
 
 set SOLUTIONS;
 param MIN_INCOME_TARGETS{s in SOLUTIONS};
 	
-data 2c-parameters.dat;
+data 2-additional.dat;
 
 for {s in SOLUTIONS} {
 	let MIN_AVERAGE_INCOME := MIN_INCOME_TARGETS[s];
@@ -33,6 +42,7 @@ for {s in SOLUTIONS} {
     display MIN_AVERAGE_INCOME;
     display average_income;
     display mad_risk;
+    display safety_indicator;
     for {i in SCENARIOS} {
     	printf "%f, ", scenario_income[i];
     }

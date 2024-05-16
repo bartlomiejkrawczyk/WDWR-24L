@@ -627,3 +627,36 @@ Rozwiązanie $S1$ jest zdominowane przez rozwiązania $S2$ i $S3$ w sensie FSD.
 W przypadku rozwiązań $S2$ i $S3$ dystrybuanty się przecinają, oznacza to że nie występuje między nimi dominacja w sensie FSD.
 
 W ogólnym przypadku dla dwóch rozwiązań efektywnych o dużej różnicy w oczekiwanym zysku rozwiązanie o wyższej średniej zysku dominuje w sensie FSD rozwiązanie o niższym oczekiwanym zysku. Dla rozwiązań efektywnych nieznacznie różniących się oczekiwanymi zyskami dominacja może zajść, ale nie musi.
+
+## Dodatek: poprawa modelu dwukryterialnego
+
+W celu poprawy rozwiązań efektywnych modelu dwukryterialnego została zdefiniowana nowa zmienna decyzyjna $safety\_indicator$ reprezentująca miarę bezpieczeństwa.
+
+Korzystamy z wiedzy, że dolne odchylenie przeciętne jest równe połowie odchylenia przeciętnego. Możemy wyliczyć współczynnik ze wzoru:
+$$
+\delta(y) = \frac{1}{2m} \sum_{i=1}^{m}|\mu(y) - y_i| = \frac{1}{m} \sum_{i:y_i<\mu(y)}[\mu(y) - y_i]
+$$
+
+Wtedy miarą bezpieczeństwa będzie różnica średnich zysków i połowy przeciętnego odchylenia przemnożonej przez pewny stały współczynnik ($lambda = 1$):
+$$
+safety\_indicator = average\_income - lambda * mad\_risk / 2
+$$
+
+Do tak zdefiniowanego parametru dodajemy funkcję oceny maksymalizującą współczynnik bezpieczeństwa:
+$$
+max(safety\_indicator)
+$$
+
+Po tych modyfikacjach otrzymane rozwiązanie powinno być rozwiązaniem wyrównująco efektywnym lub może być wyrównująco zdominowane przez alternatywne rozwiązanie optymalne o tych samych wartościach $\mu(f(x))$ i $\delta(f(x))$.
+
+W celu wizualizacji rozwiązania zostały wybrane 3 rozwiązania efektywne za pomocą wymuszenia zadanego poziomu zysku:
+
+nazwa | zadany poziom zysku (w zł) | oczekiwany zysk (w zł) | wyliczona miara ryzyka (w zł) | wyliczona miara bezpieczeństwa (w zł)
+------|----------------------------|------------------------|-------------------------------|--------------------------------------
+S1    | 5000                       | 11539.8                | 706.794                       | 11186.4
+S2    | 11542                      | 11542.3                | 712.076                       | 11186.3
+S3    | 11550                      | 11550                  | 728.842                       | 11185.6
+
+![Dystrybuanta dla trzech poprawionych rozwiązań efektywnych](./img/2-additional.png)
+
+Tym razem wszystkie dystrybuanty rozwiązań efektywnych się przecinają. Oznacza to, że żadne z tych rozwiązań nie dominuje w sensie FSD innego rozwiązania.
