@@ -1,0 +1,12 @@
+reset;
+
+model task.mod;
+data parameters.dat;
+
+option solver cplex;
+solve;
+
+display production;
+display sale;
+display left_over;
+display income;

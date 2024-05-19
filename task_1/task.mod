@@ -1,5 +1,3 @@
-reset;
-
 set PRODUCTS;
 set PROCESSES;
 set MONTHS;
@@ -19,8 +17,6 @@ param PRODUCTION_TIME{i in PROCESSES, p in PRODUCTS};
 param EXPECTED_INCOME_PER_PRODUCT{p in PRODUCTS};
 
 param SELL_LIMIT{m in MONTHS, p in PRODUCTS};
-
-data parameters.dat;
 
 #############################################################################
 
@@ -89,10 +85,3 @@ maximize max_income:
 
 #############################################################################
 
-option solver cplex;
-solve;
-
-display production;
-display sale;
-display left_over;
-display income;
