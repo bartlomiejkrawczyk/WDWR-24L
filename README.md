@@ -6,6 +6,7 @@ header-includes:
     - \usepackage{float}
     - \floatplacement{figure}{H}
     - \renewcommand{\figurename}{Rysunek}
+    - \usepackage{hyperref}
 ---
 
 ## Zadanie
@@ -1260,73 +1261,46 @@ for {s in SOLUTIONS} {
 }
 ```
 
-Na koniec został opracowany dodatek. W ramach dodatku zostały zdefiniowane pliki z danymi $\text{2-additional.dat}$:
+Scenariusze były generowane na bazie kodu opracowanego w ramach repozytorium Sampling from Truncated Multivariate Normal and t Distributions under linear inequality constraints. Kod jest dostępny w repozytorium: <https://github.com/ralphma1203/trun_mvnt>
+
+Kod generujący 100 scenariuszy wylosowanych z obciętego rozkładu t-Studenta:
 
 ```py
-data;
+from trun_mvnt import rtmvt
 
-set SOLUTIONS := S1 S2 S3;
+import numpy as np
 
-param MIN_INCOME_TARGETS :=
-	S1 5000,
-	S2 11542,
-	S3 11550;
-end;
-```
+n = 100
 
-oraz plik startowy $\text{2-additional.run}$:
+Mean = np.array([9, 8, 7, 6])
+Sigma = np.array([
+    [16, -2, -1, -3],
+    [-2, 9, -4, -1],
+    [-1, -4, 4, 1],
+    [-3, -1, 1, 1]
+])
+df = 4
+D = np.diag(np.ones(4))
+lower = np.array([5, 5, 5, 5])
+upper = np.array([12, 12, 12, 12])
 
-```py
-reset;
+random_sample = rtmvt(  # type: ignore
+    n=n,
+    Mean=Mean,
+    Sigma=Sigma,
+    nu=df,
+    D=D,
+    lower=lower,
+    upper=upper
+)
 
-option solver cplex;
-option cplex_options "time=180";
-
-param MIN_AVERAGE_INCOME;
-
-model task.mod;
-data parameters.dat;
-
-var safety_indicator;
-param lambda = 1;
-
-#############################################################################
-
-# Warunek na minimalny zadany poziom zarobków:
-subject to min_average_income_constraint:
-	average_income >= MIN_AVERAGE_INCOME;
-
-#############################################################################
-
-# Warunek na współczynnik bezpieczeństwa:
-subject to safety_indicator_constraint:
-	safety_indicator = average_income - lambda * mad_risk / 2;
-
-#############################################################################
-
-# Minimalizujemy ryzyko przy zadanym poziomie zarobków:
-maximize safety_indicator_maximization:
-	safety_indicator;
-
-#############################################################################
-
-set SOLUTIONS;
-param MIN_INCOME_TARGETS{s in SOLUTIONS};
-	
-data 2-additional.dat;
-
-for {s in SOLUTIONS} {
-	let MIN_AVERAGE_INCOME := MIN_INCOME_TARGETS[s];
-    solve;
-    display MIN_AVERAGE_INCOME;
-    display average_income;
-    display mad_risk;
-    display safety_indicator;
-    for {i in SCENARIOS} {
-    	printf "%f, ", scenario_income[i];
-    }
-    printf "\n";
-}
+print("""param SCENARIOS_INCOME_PER_PRODUCT
+    :   P1                      P2                      P3                      P4             :=""")
+for y, row in enumerate(random_sample, start=1):
+    print(f"    {y:<4}", end='\t')
+    for element in row:
+        print(f"{element:<24}", end='\t')
+    print()
 ```
 
 ## Testy poprawności implementacji
@@ -1440,3 +1414,74 @@ S3    | 11550                      | 11550                  | 728.842           
 ![Dystrybuanta dla trzech poprawionych rozwiązań efektywnych](./img/2-additional.png)
 
 Tym razem wszystkie dystrybuanty rozwiązań efektywnych się przecinają. Oznacza to, że żadne z tych rozwiązań nie dominuje w sensie FSD innego rozwiązania.
+
+### Implementacja
+
+Dodatek bazuje na podstawowej implementacji modelu, a dodatkowo zostały zdefiniowane pliki z danymi $\text{2-additional.dat}$:
+
+```py
+data;
+
+set SOLUTIONS := S1 S2 S3;
+
+param MIN_INCOME_TARGETS :=
+	S1 5000,
+	S2 11542,
+	S3 11550;
+end;
+```
+
+oraz plik startowy $\text{2-additional.run}$:
+
+```py
+reset;
+
+option solver cplex;
+option cplex_options "time=180";
+
+param MIN_AVERAGE_INCOME;
+
+model task.mod;
+data parameters.dat;
+
+var safety_indicator;
+param lambda = 1;
+
+#############################################################################
+
+# Warunek na minimalny zadany poziom zarobków:
+subject to min_average_income_constraint:
+	average_income >= MIN_AVERAGE_INCOME;
+
+#############################################################################
+
+# Warunek na współczynnik bezpieczeństwa:
+subject to safety_indicator_constraint:
+	safety_indicator = average_income - lambda * mad_risk / 2;
+
+#############################################################################
+
+# Minimalizujemy ryzyko przy zadanym poziomie zarobków:
+maximize safety_indicator_maximization:
+	safety_indicator;
+
+#############################################################################
+
+set SOLUTIONS;
+param MIN_INCOME_TARGETS{s in SOLUTIONS};
+	
+data 2-additional.dat;
+
+for {s in SOLUTIONS} {
+	let MIN_AVERAGE_INCOME := MIN_INCOME_TARGETS[s];
+    solve;
+    display MIN_AVERAGE_INCOME;
+    display average_income;
+    display mad_risk;
+    display safety_indicator;
+    for {i in SCENARIOS} {
+    	printf "%f, ", scenario_income[i];
+    }
+    printf "\n";
+}
+```
