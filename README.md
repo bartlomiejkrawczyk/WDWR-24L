@@ -514,40 +514,40 @@ display left_over;
 display income;
 ```
 
-Wartości oczekiwane rozkładu zostały wyliczone za pomocą skryptu bazującego na udostępnionym nam dokumencie $wo_tStudent.pdf$:
+Wartości oczekiwane rozkładu zostały wyliczone za pomocą skryptu bazującego na udostępnionym nam dokumencie $wo\_tStudent.pdf$:
 
 ```py
-from math import gamma as Γ, sqrt
+from math import gamma, sqrt
 from scipy.stats import t
 from typing import Callable
 
 def calculate_expected_value_for_truncated_t_student_distribution(
-    μ: float,
-    σ: float,
+    mu: float,
+    sigma: float,
     v: float,
-    α: float,
-    β: float
+    alpha: float,
+    beta: float
 ) -> float:
     f_v: Callable[[float], float] = lambda x: t(v).cdf(x)  # type: ignore
-    a = (α - μ) / σ
-    b = (β - μ) / σ
+    a = (alpha - mu) / sigma
+    b = (beta - mu) / sigma
     exponent = -(v - 1) / 2
     return (
-        μ + σ * (
-            Γ((v - 1) / 2)
+        mu + sigma * (
+            gamma((v - 1) / 2)
             * ((v + a**2)**exponent - (v + b**2)**exponent)
             * (v**(v/2))
         ) / (
             2
             * (f_v(b) - f_v(a))  # type: ignore
-            * Γ(v / 2)
-            * Γ(1 / 2)
+            * gamma(v / 2)
+            * gamma(1 / 2)
         )
     )
 
-μ = [9, 8, 7, 6]
+mu = [9, 8, 7, 6]
 
-Σ = [
+SIGMA = [
     [16, -2, -1, -3],
     [-2, 9, -4, -1],
     [-1, -4, 4, 1],
@@ -561,14 +561,14 @@ BOUNDS = [5, 12]
 DEGREES_OF_FREEDOM = 4
 
 if __name__ == '__main__':
-    for i, row in enumerate(Σ):
-        σ = sqrt(Σ[i][i])
+    for i, row in enumerate(SIGMA):
+        sigma = sqrt(SIGMA[i][i])
         expected = calculate_expected_value_for_truncated_t_student_distribution(
-            μ=μ[i],
-            σ=σ,
+            mu=mu[i],
+            sigma=sigma,
             v=DEGREES_OF_FREEDOM,
-            α=BOUNDS[LOWER],
-            β=BOUNDS[UPPER]
+            alpha=BOUNDS[LOWER],
+            beta=BOUNDS[UPPER]
         )
         print(f"E(R_{i+1}) = {expected}")
 ```
