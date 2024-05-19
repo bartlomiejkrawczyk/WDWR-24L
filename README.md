@@ -784,7 +784,7 @@ $$
 
 ## Sformułowanie modelu
 
-<!-- TODO: Sformułowanie modelu w postaci do rozwiązania z wykorzystaniem wybranego narzędzie/środowiska implementacji (kompletny kod źródłowy). -->
+<!-- Sformułowanie modelu w postaci do rozwiązania z wykorzystaniem wybranego narzędzie/środowiska implementacji (kompletny kod źródłowy). -->
 <!-- Polecane narzędzia: -->
 <!-- - optymalizacja: AMPL, CPLEX (biblioteki) -->
 <!-- - statystyka: R, MATLAB -->
@@ -1051,7 +1051,7 @@ param SELL_LIMIT
 end;
 ```
 
-Następnie zostały przygotowane pliki rozwiązujące poszczególne podpunkty z zadania $2a-start.run$:
+Następnie zostały przygotowane pliki rozwiązujące poszczególne podpunkty z zadania $\text{2a-start.run}$:
 
 ```py
 reset;
@@ -1096,7 +1096,7 @@ for {i in 0..(SAMPLES - 1)} {
 }
 ```
 
-W ramach podpunktu $b)$ zostały przygotowane dwa pliki $2b-max-income.run$:
+W ramach podpunktu $b)$ zostały przygotowane dwa pliki $\text{2b-max-income.run}$:
 
 ```py
 reset;
@@ -1148,7 +1148,7 @@ display average_income;
 display mad_risk;
 ```
 
-oraz plik $2b-min-risk.run$:
+oraz plik $\text{2b-min-risk.run}$:
 
 ```py
 reset;
@@ -1201,7 +1201,7 @@ display average_income;
 display mad_risk;
 ```
 
-W ramach podpunktu $c)$ został zdefiniowany plik $2c-paramters.dat$ zawierający wybrane ograniczenia dla 3 rozwiązań:
+W ramach podpunktu $c)$ został zdefiniowany plik $\text{2c-paramters.dat}$ zawierający wybrane ograniczenia dla 3 rozwiązań:
 
 ```py
 data;
@@ -1215,7 +1215,7 @@ param MIN_INCOME_TARGETS :=
 end;
 ```
 
-oraz plik startowy $2c-comparison.run$:
+oraz plik startowy $\text{2c-comparison.run}$:
 
 ```py
 reset;
@@ -1260,7 +1260,7 @@ for {s in SOLUTIONS} {
 }
 ```
 
-Na koniec został opracowany dodatek. W ramach dodatku zostały zdefiniowane pliki z danymi $2-additional.dat$:
+Na koniec został opracowany dodatek. W ramach dodatku zostały zdefiniowane pliki z danymi $\text{2-additional.dat}$:
 
 ```py
 data;
@@ -1274,7 +1274,7 @@ param MIN_INCOME_TARGETS :=
 end;
 ```
 
-oraz plik startowy $2-additional.run$:
+oraz plik startowy $\text{2-additional.run}$:
 
 ```py
 reset;
