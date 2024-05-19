@@ -1327,6 +1327,10 @@ Jak można zauważyć wartości na wykresie zbiegają do wartości wyliczonych z
 
 <!-- TODO: Omówienie testów poprawności implementacji -->
 
+Następnie podobnie jak w poprzednim zadaniu zostały zweryfikowane wybrane rozwiązania efektywne pod kątem spełniania ograniczeń.
+
+Wszelkie rozwiązania efektywne otrzymane na bazie tego modelu były weryfikowane pod kątem efektywności rozwiązania. To znaczy były weryfikowane pod kątem racjonalnej relacji preferencji otrzymanych zysków oraz miary ryzyka.
+
 ## Wyniki
 
 > Wyznaczyć obraz zbioru rozwiązań efektywnych w przestrzeni ryzyko–zysk.
