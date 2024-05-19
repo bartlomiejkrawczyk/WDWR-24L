@@ -85,11 +85,7 @@ Model jednokryterialny ma za zadanie opisać proces produkcyjny przedsiębiorstw
 
 Dochody ze sprzedaży produktów modelują składowe wektora losowego $R$. W przypadku jednokryterialnego modelu wyboru w warunkach ryzyka bazującym na maksymalizacji wartości oczekiwanej zysku możemy przyjąć oczekiwane dochody ze sprzedaży poszczególnych produktów jako oczekiwane wartości wektora $R$.
 
-W przypadku funkcji liniowej (jaką jest suma) wartość oczekiwana sumy jest równa sumie wartości oczekiwanych. Pozwala to na wyliczenie całkowitego zysku jako sumę oczekiwanych wartości zysków ze sprzedaży produktów w czasie pomniejszoną o sumaryczne oczekiwane koszty magazynowania produktów.
-
-<!-- TODO -->
-<!-- Wskazanie i uzasadnienie przyjętych założeń. -->
-<!-- Wskazanie podstaw teoretycznych. -->
+Ze względu, że suma jest funkcją liniową, wartość oczekiwana sumy jest równa sumie wartości oczekiwanych. Pozwala to na wyliczenie całkowitego zysku jako sumę oczekiwanych wartości zysków ze sprzedaży produktów w czasie pomniejszoną o sumaryczne oczekiwane koszty magazynowania produktów.
 
 ### Wartość oczekiwana zawężonego rozkładu t-Studenta wektora losowego $R$
 
@@ -358,18 +354,243 @@ $$
 
 ## Sformułowanie modelu
 
-<!-- TODO: Sformułowanie modelu w postaci do rozwiązania z wykorzystaniem wybranego narzędzie/środowiska implementacji (kompletny kod źródłowy). -->
+<!-- Sformułowanie modelu w postaci do rozwiązania z wykorzystaniem wybranego narzędzie/środowiska implementacji (kompletny kod źródłowy). -->
 <!-- Polecane narzędzia: -->
 <!-- - optymalizacja: AMPL, CPLEX (biblioteki) -->
 <!-- - statystyka: R, MATLAB -->
 
+Implementacja modelu jednokryterialnego została przygotowana z wykorzystaniem języka AMPL oraz biblioteki CPLEX.
+
+Wszelkie ograniczenia, parametry, zmienne decyzyjne i funkcje oceny zostały zdefiniowane w ramach pliku $task.mod$:
+
+```py
+set PRODUCTS;
+set PROCESSES;
+set MONTHS;
+set MONTHS_WITH_DECEMBER;
+set ALL_MONTHS;
+set MONTH_PREDECESSORS within MONTHS_WITH_DECEMBER cross MONTHS;
+
+param WORKING_HOURS_IN_A_MONTH;
+param PRODUCT_STORAGE_LIMIT;
+param MONTHLY_PRODUCT_STORAGE_COST;
+param PRODUCT_MINIMAL_LEFT_OVER;
+
+param PROCESS_TOOLS{p in PROCESSES};
+
+param PRODUCTION_TIME{i in PROCESSES, p in PRODUCTS};
+
+param EXPECTED_INCOME_PER_PRODUCT{p in PRODUCTS};
+
+param SELL_LIMIT{m in MONTHS, p in PRODUCTS};
+
+#############################################################################
+
+# Produkcja nie może być negatywna:
+var production{p in PRODUCTS, m in MONTHS} integer >= 0;
+
+# Sprzedaż nie może być negatywna:
+var sale{p in PRODUCTS, m in MONTHS} integer >= 0;
+
+# Pozostałości w magazynach nie mogą być negatywne:
+var left_over{p in PRODUCTS, m in ALL_MONTHS} integer >= 0;
+
+var income;
+
+#############################################################################
+
+# Czas produkcji wszystkich przedmiotów w miesiącu nie może przekroczyć 
+# dostępności maszyn w miesiącu:
+subject to production_time_constraint{m in MONTHS, i in PROCESSES}:
+	sum{p in PRODUCTS} 
+		(production[p, m] * PRODUCTION_TIME[i, p]) 
+		<= WORKING_HOURS_IN_A_MONTH * PROCESS_TOOLS[i];
+
+# Pozostałości ze sprzedaży są różnicą sumy produktów przechowywanych 
+# z poprzedniego miesiąca i wyprodukowanych oraz sprzedanych:
+subject to left_over_constraint{(s, c) in MONTH_PREDECESSORS, p in PRODUCTS}:
+	left_over[p, c] = production[p, c] + left_over[p, s] - sale[p, c];
+
+# Firma na początku stycznia nie posiada żadnych zapasów, 
+# więc pozostałości przedmiotów z grudnia są równe 0:
+subject to december_left_over_constraint{p in PRODUCTS}:
+	left_over[p, "grudzien"] = 0;
+
+# Dochodem całkowitym jest różnica dochodu ze sprzedaży oraz kosztu 
+# magazynowania:
+subject to income_constraint:
+	income = sum{p in PRODUCTS, m in MONTHS} (
+		sale[p, m] * EXPECTED_INCOME_PER_PRODUCT[p] 
+		- left_over[p, m] * MONTHLY_PRODUCT_STORAGE_COST
+	);
+
+# Ograniczenia rynkowe na liczbę sprzedawanych produktów 
+# w danym miesiącu nie mogą być przekroczone:
+subject to sale_limit_constraint{p in PRODUCTS, m in MONTHS}:
+	sale[p, m] <= SELL_LIMIT[m, p];
+	
+# Produkt P4 musi być sprzedawany w liczbie sztuk nie mniejszej 
+# niż suma sprzedawanych produktów P1 i P2:
+subject to product_sell_limit_constraint{m in MONTHS}:
+	sale["P4", m] >= sale["P1", m] + sale["P2", m];
+	
+# Istnieje możliwość składowania do PRODUCT_STORAGE_LIMIT 
+# sztuk każdego produktu:
+subject to product_storage_limit_constraint{p in PRODUCTS, m in MONTHS}:
+	left_over[p, m] <= PRODUCT_STORAGE_LIMIT;
+
+# Pożądane jest, aby pod koniec marca firma posiadała 
+# po PRODUCT_MINIMAL_LEFT_OVER sztuk każdego produktu pod koniec marca:
+subject to product_minimal_left_over_constraint{p in PRODUCTS}:
+	left_over[p, "marzec"] >= PRODUCT_MINIMAL_LEFT_OVER;
+
+#############################################################################
+
+maximize max_income:
+	income;
+```
+
+Dane z zadania zostały umieszczone w pliku $parameters.mod$:
+
+```py
+data;
+
+set PRODUCTS := P1 P2 P3 P4;
+set PROCESSES := szlifowanie wiercenie_pionowe wiercenie_poziome frezowanie toczenie;
+set MONTHS = styczen luty marzec;
+set MONTHS_WITH_DECEMBER = grudzien styczen luty;
+set ALL_MONTHS = grudzien styczen luty marzec;
+set MONTH_PREDECESSORS := (grudzien, styczen) (styczen, luty) (luty, marzec);
+
+param WORKING_HOURS_IN_A_MONTH := 384;
+param PRODUCT_STORAGE_LIMIT := 200;
+param MONTHLY_PRODUCT_STORAGE_COST := 1;
+param PRODUCT_MINIMAL_LEFT_OVER := 50;
+
+param PROCESS_TOOLS :=
+	szlifowanie       4,
+	wiercenie_pionowe 2,
+	wiercenie_poziome 3,
+	frezowanie        1,
+	toczenie          1;
+
+param PRODUCTION_TIME 
+	:                 P1   P2   P3   P4   :=
+	szlifowanie       0.4  0.6  0    0
+	wiercenie_pionowe 0.2  0.1  0    0.6
+	wiercenie_poziome 0.1  0    0.7  0
+	frezowanie        0.06 0.04 0    0.05
+	toczenie          0    0.05 0.02 0    ;
+
+param EXPECTED_INCOME_PER_PRODUCT :=
+	P1 8.6274568376001   ,
+	P2 8.304864144322744 ,
+	P3 7.605077266035032 ,
+	P4 6.421595377441505 ;
+
+param SELL_LIMIT 
+	:        P1   P2   P3   P4  :=
+	styczen  200  0    100  200
+	luty     300  100  200  200
+	marzec   0    300  100  200 ;
+
+end;
+```
+
+Do uruchamiania modelu został przygotowany oddzielny plik $task.run$:
+
+```py
+reset;
+
+model task.mod;
+data parameters.dat;
+
+option solver cplex;
+solve;
+
+display production;
+display sale;
+display left_over;
+display income;
+```
+
+Wartości oczekiwane rozkładu zostały wyliczone za pomocą skryptu bazującego na udostępnionym nam dokumencie $wo_tStudent.pdf$:
+
+```py
+from math import gamma as Γ, sqrt
+from scipy.stats import t
+from typing import Callable
+
+def calculate_expected_value_for_truncated_t_student_distribution(
+    μ: float,
+    σ: float,
+    v: float,
+    α: float,
+    β: float
+) -> float:
+    f_v: Callable[[float], float] = lambda x: t(v).cdf(x)  # type: ignore
+    a = (α - μ) / σ
+    b = (β - μ) / σ
+    exponent = -(v - 1) / 2
+    return (
+        μ + σ * (
+            Γ((v - 1) / 2)
+            * ((v + a**2)**exponent - (v + b**2)**exponent)
+            * (v**(v/2))
+        ) / (
+            2
+            * (f_v(b) - f_v(a))  # type: ignore
+            * Γ(v / 2)
+            * Γ(1 / 2)
+        )
+    )
+
+μ = [9, 8, 7, 6]
+
+Σ = [
+    [16, -2, -1, -3],
+    [-2, 9, -4, -1],
+    [-1, -4, 4, 1],
+    [-3, -1, 1, 1],
+]
+
+LOWER = 0
+UPPER = 1
+BOUNDS = [5, 12]
+
+DEGREES_OF_FREEDOM = 4
+
+if __name__ == '__main__':
+    for i, row in enumerate(Σ):
+        σ = sqrt(Σ[i][i])
+        expected = calculate_expected_value_for_truncated_t_student_distribution(
+            μ=μ[i],
+            σ=σ,
+            v=DEGREES_OF_FREEDOM,
+            α=BOUNDS[LOWER],
+            β=BOUNDS[UPPER]
+        )
+        print(f"E(R_{i+1}) = {expected}")
+```
+
 ## Testy poprawności implementacji
 
-<!-- TODO: Omówienie testów poprawności implementacji -->
+W celu weryfikacji poprawności rozwiązania zostały zweryfikowane ograniczenia z zadania po podstawieniu wartości zmiennych decyzyjnych otrzymanych dla tego rozwiązania efektywnego.
+
+1. Ilości produkcji nie przekraczają ograniczeń rynkowych.
+2. Sprzedaż produktu $P_4$ jest większa niż suma produktów $P_1$ i $P_2$.
+3. Składowanie przedmiotów w magazynie nie przekracza 200 przedmiotów.
+4. Firma na koniec marca posiada w magazynie po 50 sztuk każdego z przedmiotów.
+5. Czas produkcji przedmiotów nie przekracza dostępności maszyn w miesiącu.
+6. Na początku stycznia (pod koniec grudnia) magazyny są puste.
+7. W danym miesiącu sprzedaż oraz ilość towaru magazynowana na koniec miesiąca jest równa sumie produkcji i towarów magazynowanych.
+
+Następnie, by dalej zweryfikować poprawność modelu został on uruchomiony na bazie różnych zmodyfikowanych danych np.
+testowano magazynowanie produktów - została obniżona ilość dostępnego czasu pracy na maszynach oraz został obniżony do zera limit sprzedaży produktów w styczniu. W rezultacie w styczniu wszystkie produkty wytworzone trafiły do magazynów w celu sprzedaży w kolejnym miesiącu.
 
 ## Wyniki
 
-<!-- TODO: Omówienie wyników z nawiązaniem do teorii. -->
+<!-- Omówienie wyników z nawiązaniem do teorii. -->
 
 Znalezione rozwiązanie efektywne prowadzi do oczekiwanego zysku równego 11806.90 zł.
 
@@ -400,17 +621,16 @@ styczen   | 0  | 0  | 0  | 0
 luty      | 0  | 0  | 0  | 0
 marzec    | 50 | 50 | 50 | 50
 
+Można zauważyć, że dla tak zdefiniowanych danych nie opłaca się magazynowanie produktów między kolejnymi miesiącami. Magazynowanie na koniec marca wynika jedynie z konieczności spełnienia ograniczenia.
+
 \newpage
 
 # Dwukryterialny model zysku i ryzyka z wartością średnią jako miarą zysku i odchyleniem przeciętnym jako miarą ryzyka
 
 ## Analityczne sformułowanie modelu
 
-<!-- TODO -->
 <!-- Wskazanie i uzasadnienie przyjętych założeń. -->
 <!-- Wskazanie podstaw teoretycznych. -->
-
-<!-- wartością średnią jako miarą zysku i odchyleniem przeciętnym jako miarą ryzyka -->
 
 Model dwukryterialny został utworzony na bazie modelu jednokryterialnego. Przy rozwiązywaniu kolejnych podpunktów zostały zastosowane dwa sposoby optymalizacji rozwiązania:
 
@@ -570,6 +790,26 @@ $$
 <!-- - statystyka: R, MATLAB -->
 
 ## Testy poprawności implementacji
+
+Na starcie została zweryfikowana poprawność generacji scenariuszy z zadanego rozkładu. W ramach poprzedniego zadania zostały wyliczone wartości oczekiwane:
+$$
+E(R_1) = 8.6274568376001
+$$
+$$
+E(R_2) = 8.304864144322744
+$$
+$$
+E(R_3) = 7.605077266035032
+$$
+$$
+E(R_4) = 6.421595377441505
+$$
+
+W celu weryfikacji, czy wyliczone wartości oczekiwane są zbieżne z wyznaczonymi wartościami oczekiwanymi na bazie wylosowanych próbek, został przygotowany wykres. Na wykresie zostały wyznaczone wyliczone średnie z próbek o zadanej wielkości:
+
+![Wykres](./img/scenarios_plot.png)
+
+Jak można zauważyć wartości na wykresie zbiegają do wartości wyliczonych ze wzoru.
 
 <!-- TODO: Omówienie testów poprawności implementacji -->
 

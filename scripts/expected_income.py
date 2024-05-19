@@ -10,23 +10,16 @@ def calculate_expected_value_for_truncated_t_student_distribution(
     α: float,
     β: float
 ) -> float:
-
     f_v: Callable[[float], float] = lambda x: t(v).cdf(x)  # type: ignore
-
     a = (α - μ) / σ
     b = (β - μ) / σ
-
     exponent = -(v - 1) / 2
-
     return (
-        μ
-        + σ * (
+        μ + σ * (
             Γ((v - 1) / 2)
             * ((v + a**2)**exponent - (v + b**2)**exponent)
             * (v**(v/2))
-        )
-        /
-        (
+        ) / (
             2
             * (f_v(b) - f_v(a))  # type: ignore
             * Γ(v / 2)
